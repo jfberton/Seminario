@@ -10,7 +10,7 @@
 namespace Seminario.Aplicativo {
     
     
-    public partial class pruebamapa_guardarpuntos {
+    public partial class mapa_guardarpuntos {
         
         /// <summary>
         /// form1 control.
@@ -22,75 +22,93 @@ namespace Seminario.Aplicativo {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// txtID control.
+        /// tb_nombre_lugar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField txtID;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tb_nombre_lugar;
         
         /// <summary>
-        /// txtUbicacion control.
+        /// tb_direccion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUbicacion;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tb_direccion;
         
         /// <summary>
-        /// txtLat control.
+        /// tb_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLat;
+        protected global::System.Web.UI.WebControls.HiddenField tb_ID;
         
         /// <summary>
-        /// txtLong control.
+        /// tb_latitud control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLong;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tb_latitud;
         
         /// <summary>
-        /// btnAgregar control.
+        /// tb_longitud control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tb_longitud;
         
         /// <summary>
-        /// btnModificar control.
+        /// btn_agregar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnModificar;
+        protected global::System.Web.UI.WebControls.Button btn_agregar;
         
         /// <summary>
-        /// btnEliminar control.
+        /// btn_modificar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEliminar;
+        protected global::System.Web.UI.WebControls.Button btn_modificar;
         
         /// <summary>
-        /// btnLimpiar control.
+        /// btn_eliminar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLimpiar;
+        protected global::System.Web.UI.WebControls.Button btn_eliminar;
+        
+        /// <summary>
+        /// btn_limpiar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_limpiar;
+        
+        /// <summary>
+        /// gv_ubicaciones control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_ubicaciones;
     }
 }

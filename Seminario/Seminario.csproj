@@ -45,6 +45,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -98,16 +106,30 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Aplicativo\pruebamapa_guardarpuntos.aspx" />
+    <Content Include="Aplicativo\mapa_guardarpuntos.aspx" />
+    <Content Include="Aplicativo\mapa_mostrar_ubicaciones.aspx" />
+    <Content Include="Aplicativo\seminarioDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>seminarioDB.Context.cs</LastGenOutput>
+      <DependentUpon>seminarioDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Aplicativo\seminarioDB.edmx.sql" />
+    <Content Include="Aplicativo\seminarioDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>seminarioDB.cs</LastGenOutput>
+      <DependentUpon>seminarioDB.edmx</DependentUpon>
+    </Content>
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\jquery.gmaps.css" />
     <Content Include="default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-1.10.2.min.js" />
+    <Content Include="js\jquery.gmaps.js" />
     <Content Include="js\npm.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -2153,17 +2175,37 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aplicativo\pruebamapa_guardarpuntos.aspx.cs">
-      <DependentUpon>pruebamapa_guardarpuntos.aspx</DependentUpon>
+    <Compile Include="Aplicativo\mapa_guardarpuntos.aspx.cs">
+      <DependentUpon>mapa_guardarpuntos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Aplicativo\pruebamapa_guardarpuntos.aspx.designer.cs">
-      <DependentUpon>pruebamapa_guardarpuntos.aspx</DependentUpon>
+    <Compile Include="Aplicativo\mapa_guardarpuntos.aspx.designer.cs">
+      <DependentUpon>mapa_guardarpuntos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\mapa_mostrar_ubicaciones.aspx.cs">
+      <DependentUpon>mapa_mostrar_ubicaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\mapa_mostrar_ubicaciones.aspx.designer.cs">
+      <DependentUpon>mapa_mostrar_ubicaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\seminarioDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>seminarioDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\seminarioDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>seminarioDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\seminarioDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>seminarioDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Ubicacion.cs">
+      <DependentUpon>seminarioDB.tt</DependentUpon>
     </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
@@ -2176,6 +2218,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
