@@ -14,12 +14,15 @@
     </Key>
     <Property Name="ubicacion_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ubicacion_nombre_lugar" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ubicacion_descripcion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ubicacion_direccion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ubicacion_latitud" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ubicacion_longitud" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ubicacion_telefono" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ubicacion_web" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ubicacion_mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ubicacion_face" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ubicacion_twitter" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -34,12 +37,15 @@
           </Key>
           <Property Name="ubicacion_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ubicacion_nombre_lugar" Type="String" Nullable="false" />
+          <Property Name="ubicacion_descripcion" Type="String" Nullable="false" />
           <Property Name="ubicacion_direccion" Type="String" Nullable="false" />
           <Property Name="ubicacion_latitud" Type="String" Nullable="false" />
           <Property Name="ubicacion_longitud" Type="String" Nullable="false" />
           <Property Name="ubicacion_telefono" Type="String" Nullable="false" />
           <Property Name="ubicacion_web" Type="String" Nullable="false" />
           <Property Name="ubicacion_mail" Type="String" Nullable="false" />
+          <Property Name="ubicacion_face" Type="String" Nullable="false" />
+          <Property Name="ubicacion_twitter" Type="String" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -52,12 +58,15 @@
         <MappingFragment StoreEntitySet="Ubicaciones">
           <ScalarProperty Name="ubicacion_Id" ColumnName="ubicacion_Id" />
           <ScalarProperty Name="ubicacion_nombre_lugar" ColumnName="ubicacion_nombre_lugar" />
+          <ScalarProperty Name="ubicacion_descripcion" ColumnName="ubicacion_descripcion" />
           <ScalarProperty Name="ubicacion_direccion" ColumnName="ubicacion_direccion" />
           <ScalarProperty Name="ubicacion_latitud" ColumnName="ubicacion_latitud" />
           <ScalarProperty Name="ubicacion_longitud" ColumnName="ubicacion_longitud" />
           <ScalarProperty Name="ubicacion_telefono" ColumnName="ubicacion_telefono" />
           <ScalarProperty Name="ubicacion_web" ColumnName="ubicacion_web" />
           <ScalarProperty Name="ubicacion_mail" ColumnName="ubicacion_mail" />
+          <ScalarProperty Name="ubicacion_face" ColumnName="ubicacion_face" />
+          <ScalarProperty Name="ubicacion_twitter" ColumnName="ubicacion_twitter" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

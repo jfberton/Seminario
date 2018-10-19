@@ -16,11 +16,14 @@ namespace Seminario.Aplicativo
     {
         public int ubicacion_Id { get; set; }
         public string ubicacion_nombre_lugar { get; set; }
+        public string ubicacion_descripcion { get; set; }
         public string ubicacion_direccion { get; set; }
         public string ubicacion_latitud { get; set; }
         public string ubicacion_longitud { get; set; }
         public string ubicacion_telefono { get; set; }
         public string ubicacion_web { get; set; }
         public string ubicacion_mail { get; set; }
+        public string ubicacion_face { get; set; }
+        public string ubicacion_twitter { get; set; }
     }
 }

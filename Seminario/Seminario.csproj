@@ -126,6 +126,7 @@
     <Content Include="css\jquery.gmaps.css" />
     <Content Include="default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="img\pin_map.png" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-1.10.2.min.js" />

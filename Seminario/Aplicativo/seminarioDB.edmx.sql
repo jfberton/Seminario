@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/17/2018 18:18:36
+-- Date Created: 10/18/2018 20:09:46
 -- Generated from EDMX file: D:\Desarrollo\Mios\Seminario\Seminario\Aplicativo\seminarioDB.edmx
 -- --------------------------------------------------
 
@@ -34,12 +34,15 @@ GO
 CREATE TABLE [dbo].[Ubicaciones] (
     [ubicacion_Id] int IDENTITY(1,1) NOT NULL,
     [ubicacion_nombre_lugar] nvarchar(max)  NOT NULL,
+    [ubicacion_descripcion] nvarchar(max)  NOT NULL,
     [ubicacion_direccion] nvarchar(max)  NOT NULL,
     [ubicacion_latitud] nvarchar(max)  NOT NULL,
     [ubicacion_longitud] nvarchar(max)  NOT NULL,
     [ubicacion_telefono] nvarchar(max)  NOT NULL,
     [ubicacion_web] nvarchar(max)  NOT NULL,
-    [ubicacion_mail] nvarchar(max)  NOT NULL
+    [ubicacion_mail] nvarchar(max)  NOT NULL,
+    [ubicacion_face] nvarchar(max)  NOT NULL,
+    [ubicacion_twitter] nvarchar(max)  NOT NULL
 );
 GO
 

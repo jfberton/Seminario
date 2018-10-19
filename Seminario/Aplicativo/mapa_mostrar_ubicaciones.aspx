@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/jquery.gmaps.css" rel="stylesheet" />
     <script src="../js/jquery-1.10.2.min.js"></script>
     <script src="../js/jquery.gmaps.js"></script>
@@ -15,6 +16,11 @@
         .gmaps {
             height: 500px;
             width: 100%;
+        }
+
+        .table-borderless td,
+        .table-borderless th {
+            border: none !important;
         }
     </style>
 
@@ -38,20 +44,39 @@
                         data-lng="<%# DataBinder.Eval(Container.DataItem, "ubicacion_longitud") %>"
                         class="marker">
                         <div class="map-card">
-                            <h1><%# DataBinder.Eval(Container.DataItem, "ubicacion_lugar") %></h1>
-                            <p><%# DataBinder.Eval(Container.DataItem, "ubicacion_direccion") %></p>
-                            <p>Phone: +56753223344</p>
-                            <p>e-Mail: fake1@email.com</p>
+                            <h3><%# DataBinder.Eval(Container.DataItem, "ubicacion_nombre") %></h3>
+                            <p style="font-size: medium; font-style: italic; font-weight: bold; color: grey"><%# DataBinder.Eval(Container.DataItem, "ubicacion_descripcion") %></p>
+                            <table class="table table-hover">
+                                <tr>
+                                    <td style="border-right: solid; border-right-color: black; border-right-width: medium;">
+                                        <asp:Image ImageUrl="~/img/pin_map.png" runat="server" />
+                                    </td>
+                                    <td>
+                                        <table class="table table-borderless table-hover text-left">
+                                            <tr>
+                                                <td><b><u>Dirección:</u></b></td>
+                                                <td><%# DataBinder.Eval(Container.DataItem, "ubicacion_direccion") %></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b><u>Teléfono:</u></b></td>
+                                                <td><%# DataBinder.Eval(Container.DataItem, "ubicacion_telefono") %></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b><u>E-mail:</u></b></td>
+                                                <td><a href="mailto:<%# DataBinder.Eval(Container.DataItem, "ubicacion_mail") %>"><%# DataBinder.Eval(Container.DataItem, "ubicacion_mail") %></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b><u>Página:</u></b></td>
+                                                <td><a href="http://<%# DataBinder.Eval(Container.DataItem, "ubicacion_web") %>" target="_blank"><%# DataBinder.Eval(Container.DataItem, "ubicacion_web") %></a></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </ItemTemplate>
-
             </asp:Repeater>
-
-
-
-
-
 
         </div>
     </form>
