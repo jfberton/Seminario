@@ -6,6 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="d1445338afec4738b965b078bb510588" Name="Diagram1" >
         <EntityTypeShape EntityType="seminarioDB.Ubicacion" Width="2.625" PointX="3.75" PointY="1.5" />
+        <EntityTypeShape EntityType="seminarioDB.Secuenciador" Width="4.375" PointX="6.625" PointY="1.5" />
+        <EntityTypeShape EntityType="seminarioDB.Clase" Width="2.625" PointX="6.875" PointY="6.75" />
+        <AssociationConnector Association="seminarioDB.SecuenciadorClase" />
+        <EntityTypeShape EntityType="seminarioDB.Usuario" Width="1.5" PointX="12" PointY="3.125" />
+        <AssociationConnector Association="seminarioDB.UsuarioSecuenciador" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

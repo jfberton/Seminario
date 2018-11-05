@@ -15,6 +15,7 @@ namespace Seminario.Aplicativo
     public partial class Ubicacion
     {
         public int ubicacion_Id { get; set; }
+        public string ubicacion_categoria { get; set; }
         public string ubicacion_nombre_lugar { get; set; }
         public string ubicacion_descripcion { get; set; }
         public string ubicacion_direccion { get; set; }

@@ -7,12 +7,24 @@
     <Schema Namespace="seminarioDB.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="seminarioDBStoreContainer">
     <EntitySet Name="Ubicaciones" EntityType="seminarioDB.Store.Ubicaciones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Secuenciadores" EntityType="seminarioDB.Store.Secuenciadores" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Clases" EntityType="seminarioDB.Store.Clases" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usuarios" EntityType="seminarioDB.Store.Usuarios" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="SecuenciadorClase" Association="seminarioDB.Store.SecuenciadorClase">
+      <End Role="Secuenciador" EntitySet="Secuenciadores" />
+      <End Role="Clase" EntitySet="Clases" />
+    </AssociationSet>
+    <AssociationSet Name="UsuarioSecuenciador" Association="seminarioDB.Store.UsuarioSecuenciador">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Secuenciador" EntitySet="Secuenciadores" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Ubicaciones">
     <Key>
       <PropertyRef Name="ubicacion_Id" />
     </Key>
     <Property Name="ubicacion_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ubicacion_categoria" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ubicacion_nombre_lugar" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ubicacion_descripcion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ubicacion_direccion" Type="nvarchar(max)" Nullable="false" />
@@ -24,18 +36,101 @@
     <Property Name="ubicacion_face" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ubicacion_twitter" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="Secuenciadores">
+    <Key>
+      <PropertyRef Name="secuenciador_id" />
+    </Key>
+    <Property Name="secuenciador_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usuario_id" Type="int" Nullable="false" />
+    <Property Name="secuenciador_publico" Type="bit" Nullable="false" />
+    <Property Name="secuenciador_datos_generales_nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="secuenciador_datos_generales_area" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="secuenciador_datos_generales_asignatura" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="secuenciador_datos_generales_curso" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="secuenciador_datos_generales_institucion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="secuenciador_descripcion_tema_general" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="secuenciador_descripcion_contenidos" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="secuenciador_descripcion_numero_clases" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="secuenciador_descripcion_autor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="secuenciador_descripcion_capacidades_a_desarrollar" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="secuenciador_descripcion_propositos" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="secuenciador_descripcion_objetivos" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="secuenciador_descripcion_metodologia" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="secuenciador_descripcion_orientaciones_generales_evaluacion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clases">
+    <Key>
+      <PropertyRef Name="clase_id" />
+    </Key>
+    <Property Name="secuenciador_id" Type="int" Nullable="false" />
+    <Property Name="clase_id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="clase_numero" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="clase_actividades_apertura" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="clase_actividades_desarrollo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="clase_actividades_cierre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="clase_evidencias_aprendizaje" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="clase_recursos" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="clase_bibliografia" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="usuario_id" />
+    </Key>
+    <Property Name="usuario_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usuario_perfil" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="usuario_nombre_apellido" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="usuario_email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="usuario_usuario" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="usuario_clave" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="SecuenciadorClase">
+    <End Role="Secuenciador" Type="seminarioDB.Store.Secuenciadores" Multiplicity="1" />
+    <End Role="Clase" Type="seminarioDB.Store.Clases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Secuenciador">
+        <PropertyRef Name="secuenciador_id" />
+      </Principal>
+      <Dependent Role="Clase">
+        <PropertyRef Name="secuenciador_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsuarioSecuenciador">
+    <End Role="Usuario" Type="seminarioDB.Store.Usuarios" Multiplicity="1" />
+    <End Role="Secuenciador" Type="seminarioDB.Store.Secuenciadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="usuario_id" />
+      </Principal>
+      <Dependent Role="Secuenciador">
+        <PropertyRef Name="usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="seminarioDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="seminarioDBContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Ubicaciones" EntityType="seminarioDB.Ubicacion" />
+          <EntitySet Name="Secuenciadores" EntityType="seminarioDB.Secuenciador" />
+          <EntitySet Name="Clases" EntityType="seminarioDB.Clase" />
+          <AssociationSet Name="SecuenciadorClase" Association="seminarioDB.SecuenciadorClase">
+            <End Role="Secuenciador" EntitySet="Secuenciadores" />
+            <End Role="Clase" EntitySet="Clases" />
+          </AssociationSet>
+          <EntitySet Name="Usuarios" EntityType="seminarioDB.Usuario" />
+          <AssociationSet Name="UsuarioSecuenciador" Association="seminarioDB.UsuarioSecuenciador">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Secuenciador" EntitySet="Secuenciadores" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Ubicacion">
           <Key>
             <PropertyRef Name="ubicacion_Id" />
           </Key>
           <Property Name="ubicacion_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ubicacion_categoria" Type="String" Nullable="false" />
           <Property Name="ubicacion_nombre_lugar" Type="String" Nullable="false" />
           <Property Name="ubicacion_descripcion" Type="String" Nullable="false" />
           <Property Name="ubicacion_direccion" Type="String" Nullable="false" />
@@ -47,6 +142,81 @@
           <Property Name="ubicacion_face" Type="String" Nullable="false" />
           <Property Name="ubicacion_twitter" Type="String" Nullable="false" />
         </EntityType>
+        <EntityType Name="Secuenciador">
+          <Key>
+            <PropertyRef Name="secuenciador_id" />
+          </Key>
+          <Property Name="secuenciador_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario_id" Type="Int32" Nullable="false" />
+          <Property Name="secuenciador_publico" Type="Boolean" Nullable="false" />
+          <Property Name="secuenciador_datos_generales_nombre" Type="String" Nullable="false" />
+          <Property Name="secuenciador_datos_generales_area" Type="String" Nullable="false" />
+          <Property Name="secuenciador_datos_generales_asignatura" Type="String" Nullable="false" />
+          <Property Name="secuenciador_datos_generales_curso" Type="String" Nullable="false" />
+          <Property Name="secuenciador_datos_generales_institucion" Type="String" Nullable="false" />
+          <Property Name="secuenciador_descripcion_tema_general" Type="String" Nullable="false" />
+          <Property Name="secuenciador_descripcion_contenidos" Type="String" Nullable="false" />
+          <Property Name="secuenciador_descripcion_numero_clases" Type="String" Nullable="false" />
+          <Property Name="secuenciador_descripcion_autor" Type="String" Nullable="false" />
+          <Property Name="secuenciador_descripcion_capacidades_a_desarrollar" Type="String" Nullable="false" />
+          <Property Name="secuenciador_descripcion_propositos" Type="String" Nullable="false" />
+          <Property Name="secuenciador_descripcion_objetivos" Type="String" Nullable="false" />
+          <Property Name="secuenciador_descripcion_metodologia" Type="String" Nullable="false" />
+          <Property Name="secuenciador_descripcion_orientaciones_generales_evaluacion" Type="String" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="seminarioDB.UsuarioSecuenciador" FromRole="Secuenciador" ToRole="Usuario" />
+          <NavigationProperty Name="Clases" Relationship="seminarioDB.SecuenciadorClase" FromRole="Secuenciador" ToRole="Clase" />
+        </EntityType>
+        <EntityType Name="Clase">
+          <Key>
+            <PropertyRef Name="clase_id" />
+          </Key>
+          <Property Name="secuenciador_id" Type="Int32" Nullable="false" />
+          <Property Name="clase_id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="clase_numero" Type="String" Nullable="false" />
+          <Property Name="clase_actividades_apertura" Type="String" Nullable="false" />
+          <Property Name="clase_actividades_desarrollo" Type="String" Nullable="false" />
+          <Property Name="clase_actividades_cierre" Type="String" Nullable="false" />
+          <Property Name="clase_evidencias_aprendizaje" Type="String" Nullable="false" />
+          <Property Name="clase_recursos" Type="String" Nullable="false" />
+          <Property Name="clase_bibliografia" Type="String" Nullable="false" />
+          <NavigationProperty Name="Secuenciador" Relationship="seminarioDB.SecuenciadorClase" FromRole="Clase" ToRole="Secuenciador" />
+        </EntityType>
+        <Association Name="SecuenciadorClase">
+          <End Type="seminarioDB.Secuenciador" Role="Secuenciador" Multiplicity="1" />
+          <End Type="seminarioDB.Clase" Role="Clase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Secuenciador">
+              <PropertyRef Name="secuenciador_id" />
+            </Principal>
+            <Dependent Role="Clase">
+              <PropertyRef Name="secuenciador_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="usuario_id" />
+          </Key>
+          <Property Name="usuario_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario_perfil" Type="String" Nullable="false" />
+          <Property Name="usuario_nombre_apellido" Type="String" Nullable="false" />
+          <Property Name="usuario_email" Type="String" Nullable="false" />
+          <Property Name="usuario_usuario" Type="String" Nullable="false" />
+          <Property Name="usuario_clave" Type="String" Nullable="false" />
+          <NavigationProperty Name="Secuenciadores" Relationship="seminarioDB.UsuarioSecuenciador" FromRole="Usuario" ToRole="Secuenciador" />
+        </EntityType>
+        <Association Name="UsuarioSecuenciador">
+          <End Type="seminarioDB.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="seminarioDB.Secuenciador" Role="Secuenciador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usuario_id" />
+            </Principal>
+            <Dependent Role="Secuenciador">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -57,6 +227,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(seminarioDB.Ubicacion)">
         <MappingFragment StoreEntitySet="Ubicaciones">
           <ScalarProperty Name="ubicacion_Id" ColumnName="ubicacion_Id" />
+          <ScalarProperty Name="ubicacion_categoria" ColumnName="ubicacion_categoria" />
           <ScalarProperty Name="ubicacion_nombre_lugar" ColumnName="ubicacion_nombre_lugar" />
           <ScalarProperty Name="ubicacion_descripcion" ColumnName="ubicacion_descripcion" />
           <ScalarProperty Name="ubicacion_direccion" ColumnName="ubicacion_direccion" />
@@ -67,6 +238,56 @@
           <ScalarProperty Name="ubicacion_mail" ColumnName="ubicacion_mail" />
           <ScalarProperty Name="ubicacion_face" ColumnName="ubicacion_face" />
           <ScalarProperty Name="ubicacion_twitter" ColumnName="ubicacion_twitter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Secuenciadores">
+      <EntityTypeMapping TypeName="IsTypeOf(seminarioDB.Secuenciador)">
+        <MappingFragment StoreEntitySet="Secuenciadores">
+          <ScalarProperty Name="secuenciador_id" ColumnName="secuenciador_id" />
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="secuenciador_publico" ColumnName="secuenciador_publico" />
+          <ScalarProperty Name="secuenciador_datos_generales_nombre" ColumnName="secuenciador_datos_generales_nombre" />
+          <ScalarProperty Name="secuenciador_datos_generales_area" ColumnName="secuenciador_datos_generales_area" />
+          <ScalarProperty Name="secuenciador_datos_generales_asignatura" ColumnName="secuenciador_datos_generales_asignatura" />
+          <ScalarProperty Name="secuenciador_datos_generales_curso" ColumnName="secuenciador_datos_generales_curso" />
+          <ScalarProperty Name="secuenciador_datos_generales_institucion" ColumnName="secuenciador_datos_generales_institucion" />
+          <ScalarProperty Name="secuenciador_descripcion_tema_general" ColumnName="secuenciador_descripcion_tema_general" />
+          <ScalarProperty Name="secuenciador_descripcion_contenidos" ColumnName="secuenciador_descripcion_contenidos" />
+          <ScalarProperty Name="secuenciador_descripcion_numero_clases" ColumnName="secuenciador_descripcion_numero_clases" />
+          <ScalarProperty Name="secuenciador_descripcion_autor" ColumnName="secuenciador_descripcion_autor" />
+          <ScalarProperty Name="secuenciador_descripcion_capacidades_a_desarrollar" ColumnName="secuenciador_descripcion_capacidades_a_desarrollar" />
+          <ScalarProperty Name="secuenciador_descripcion_propositos" ColumnName="secuenciador_descripcion_propositos" />
+          <ScalarProperty Name="secuenciador_descripcion_objetivos" ColumnName="secuenciador_descripcion_objetivos" />
+          <ScalarProperty Name="secuenciador_descripcion_metodologia" ColumnName="secuenciador_descripcion_metodologia" />
+          <ScalarProperty Name="secuenciador_descripcion_orientaciones_generales_evaluacion" ColumnName="secuenciador_descripcion_orientaciones_generales_evaluacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clases">
+      <EntityTypeMapping TypeName="IsTypeOf(seminarioDB.Clase)">
+        <MappingFragment StoreEntitySet="Clases">
+          <ScalarProperty Name="clase_id" ColumnName="clase_id" />
+          <ScalarProperty Name="secuenciador_id" ColumnName="secuenciador_id" />
+          <ScalarProperty Name="clase_numero" ColumnName="clase_numero" />
+          <ScalarProperty Name="clase_actividades_apertura" ColumnName="clase_actividades_apertura" />
+          <ScalarProperty Name="clase_actividades_desarrollo" ColumnName="clase_actividades_desarrollo" />
+          <ScalarProperty Name="clase_actividades_cierre" ColumnName="clase_actividades_cierre" />
+          <ScalarProperty Name="clase_evidencias_aprendizaje" ColumnName="clase_evidencias_aprendizaje" />
+          <ScalarProperty Name="clase_recursos" ColumnName="clase_recursos" />
+          <ScalarProperty Name="clase_bibliografia" ColumnName="clase_bibliografia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="IsTypeOf(seminarioDB.Usuario)">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="usuario_perfil" ColumnName="usuario_perfil" />
+          <ScalarProperty Name="usuario_nombre_apellido" ColumnName="usuario_nombre_apellido" />
+          <ScalarProperty Name="usuario_email" ColumnName="usuario_email" />
+          <ScalarProperty Name="usuario_usuario" ColumnName="usuario_usuario" />
+          <ScalarProperty Name="usuario_clave" ColumnName="usuario_clave" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

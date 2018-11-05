@@ -1,0 +1,218 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Seminario.Pagina.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        hr {
+            border-top: 3px double #0094ff;
+            margin: 0px;
+        }
+
+        .navbar-nav.navbar-center {
+            position: absolute;
+            left: 50%;
+            transform: translatex(-50%);
+        }
+
+        .btn-mapa {
+            color: #fff;
+            background-color: #9c2fb6;
+            border-color: #841f9c;
+        }
+
+            .btn-mapa:focus,
+            .btn-mapa.focus {
+                color: #fff;
+                background-color: #801f97;
+                border-color: #841f9c;
+            }
+
+            .btn-mapa:hover {
+                color: #fff;
+                background-color: #801f97;
+                border-color: #841f9c;
+            }
+
+            .btn-mapa:active,
+            .btn-mapa.active,
+            .open > .dropdown-toggle.btn-mapa {
+                color: #fff;
+                background-color: #67137c;
+                border-color: #560e68;
+            }
+
+                .btn-mapa:active:hover,
+                .btn-mapa.active:hover,
+                .open > .dropdown-toggle.btn-mapa:hover,
+                .btn-mapa:active:focus,
+                .btn-mapa.active:focus,
+                .open > .dropdown-toggle.btn-mapa:focus,
+                .btn-mapa:active.focus,
+                .btn-mapa.active.focus,
+                .open > .dropdown-toggle.btn-mapa.focus {
+                    color: #fff;
+                    background-color: #67137c;
+                    border-color: #560e68;
+                }
+
+            .btn-mapa:active,
+            .btn-mapa.active,
+            .open > .dropdown-toggle.btn-mapa {
+                background-image: none;
+            }
+
+            .btn-mapa.disabled:hover,
+            .btn-mapa[disabled]:hover,
+            fieldset[disabled] .btn-mapa:hover,
+            .btn-mapa.disabled:focus,
+            .btn-mapa[disabled]:focus,
+            fieldset[disabled] .btn-mapa:focus,
+            .btn-mapa.disabled.focus,
+            .btn-mapa[disabled].focus,
+            fieldset[disabled] .btn-mapa.focus {
+                background-color: #a345ba;
+                border-color: #a036ba;
+            }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <!-- Encabezado -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <asp:Image ImageUrl="~/images/utn_frre_encab.jpg" runat="server" />
+                            </div>
+                            <div class="col-md-7 text-right">
+                                <asp:Image ImageUrl="~/images/encab9.jpg" Style="height: 100px" runat="server" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <asp:Label Text="Usuario" ID="lbl_usuario_logueado" runat="server" />
+                                |
+                                <asp:LinkButton Text="Iniciar sesión" OnClick="lbl_iniciar_cerrar_sesion_Click" ID="lbl_iniciar_cerrar_sesion" runat="server" />
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+            <br />
+
+            <!-- Menú -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container">
+                        <div class="btn-group btn-group-justified" role="group">
+                            <div class="btn-group" role="group">
+                                <asp:Button Text="Inicio" CssClass="btn btn-primary" ID="btn_inicio" OnClick="btn_inicio_Click" runat="server" />
+                            </div>
+                            <div class="btn-group" role="group">
+                                <asp:Button Text="¿Porqué elegirnos?" CssClass="btn btn-info" ID="btn_porque_elegirnos" OnClick="btn_porque_elegirnos_Click" runat="server" />
+                            </div>
+                            <div class="btn-group" role="group">
+                                <asp:Button Text="Nuestras carreras" CssClass="btn btn-success" ID="btn_nuestras_carreras" OnClick="btn_nuestras_carreras_Click" runat="server" />
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" runat="server" id="btn_seminario_universitario" aria-haspopup="true" aria-expanded="false">
+                                    Seminario Universitario <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <asp:LinkButton Text="Nuestra Propuesta" ID="btn_nuestra_propuesta" OnClick="btn_nuestra_propuesta_Click" runat="server" /></li>
+                                    <li>
+                                        <asp:LinkButton Text="Módulos" ID="btn_modulos" OnClick="btn_modulos_Click" runat="server" /></li>
+                                    <li>
+                                        <asp:LinkButton Text="Modalidades de Cursado" ID="btn_modalidades_de_cursado" OnClick="btn_modalidades_de_cursado_Click" runat="server" /></li>
+                                    <li>
+                                        <asp:LinkButton Text="Exámen de Admisión" ID="btn_examen_de_admision" OnClick="btn_examen_de_admision_Click" runat="server" /></li>
+                                    <li>
+                                        <asp:LinkButton Text="Turnos" ID="btn_turnos" OnClick="btn_turnos_Click" runat="server" /></li>
+                                    <li>
+                                        <asp:LinkButton Text="Inscripción" ID="btn_inscripcion" OnClick="btn_inscripcion_Click" runat="server" /></li>
+                                </ul>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <asp:Button Text="Articulación" CssClass="btn btn-warning" ID="btn_articulacion" OnClick="btn_articulacion_Click" runat="server" />
+                            </div>
+                            <div class="btn-group" role="group" runat="server" id="div_institutos">
+                                <asp:Button Text="Institutos" CssClass="btn btn-mapa" ID="btn_institutos" OnClick="btn_institutos_Click" runat="server" />
+                            </div>
+                            <div class="btn-group" role="group" runat="server" id="div_secuenciador">
+                                <asp:Button Text="Secuenciador" CssClass="btn btn-default" ID="btn_secuenciador" OnClick="btn_secuenciador_Click" runat="server" />
+                            </div>
+                            <div class="btn-group" role="group" runat="server" id="div_admin">
+                                <button type="button" class="btn btn-mapa dropdown-toggle" data-toggle="dropdown" runat="server" id="btn_institutos_admin" aria-haspopup="true" aria-expanded="false">
+                                    Administrar <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <asp:LinkButton Text="Usuarios" ID="btn_usuarios" OnClick="btn_usuarios_Click" runat="server" /></li>
+                                    <li>
+                                        <asp:LinkButton Text="Ubicaciones" ID="btn_editar_unbicaciones" OnClick="btn_editar_unbicaciones_Click" runat="server" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <!-- Cuerpo de la página -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container">
+                        <div style="overflow-x: hidden; overflow-y: hidden">
+                            <asp:ContentPlaceHolder ID="cph_cuerpo" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <!-- Footer -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div style="background-color: dimgray">
+                        <hr />
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <div class="col-md-12" style="margin: 3px;"><a style="color: white; font-size: x-small" href="http://www.frre.utn.edu.ar/" target="_blank">Portal UTN-FRRe</a></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="margin: 3px; color: white; font-size: x-small">French 414 - (H3500CHJ)   |   Resistencia - Chaco   |   Tel/Fax: (54-0362) 4432683 / 4432928</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="margin: 3px; color: white; font-size: x-small">©Ing. Claudia R. Garcia - 2017</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <br />
+                                    <a href="https://www.facebook.com/suFRRe/" target="_blank">
+                                        <asp:Image ImageUrl="~/images/face.jpg" runat="server" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</body>
+</html>

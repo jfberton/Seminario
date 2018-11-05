@@ -27,7 +27,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div data-key="API_KEY"
+        <div data-key="AIzaSyAErdqW0B1ui1G-SeDOu_rk5nzU2TCLZcE"
             data-control-zoom="true"
             data-control-type="true"
             data-control-scale="true"

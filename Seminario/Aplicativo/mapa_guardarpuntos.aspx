@@ -11,18 +11,17 @@
 
 
     <!-- API Google maps-->
-    <script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=API_KEY'></script>
+    <script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyAErdqW0B1ui1G-SeDOu_rk5nzU2TCLZcE'></script>
 
     <!-- librerias js -->
     <script src="../js/jquery-1.10.2.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/locationpicker.jquery.js"></script>
-    <script src="../js/locationpicker.jquery.js"></script>
     <style>
         .pac-container{z-index:2000 !important;}
     </style>
 
-    <title>Obtener coordenadas del punto</title>
+    <title>O    btener coordenadas del punto</title>
 
 </head>
 <body>
