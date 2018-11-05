@@ -72,13 +72,13 @@
                                 <!-- content -->
                                 <p id="u3931-2">Recursos Educativos Interactivos</p>
                                 <p id="u3931-3">&nbsp;</p>
-                                <p><a class="nonblock" href="../contenidos/Quimica/IntroQuimica/index.html" target="_blank">Introducción a la Química</a></p>
+                                <p><a class="nonblock" href="contenidos/Quimica/IntroQuimica/index.html" target="_blank">Introducción a la Química</a></p>
                                 <p id="u3931-7">&nbsp;</p>
-                                <p><a class="nonblock" href="../contenidos/Quimica/EstructuraAtomica/index.html" target="_blank">Estructura Atómica</a></p>
+                                <p><a class="nonblock" href="contenidos/Quimica/EstructuraAtomica/index.html" target="_blank">Estructura Atómica</a></p>
                                 <p id="u3931-11">&nbsp;</p>
-                                <p><a class="nonblock" href="../contenidos/Fisica/Fuerza/index.html" target="_blank">Fuerza</a></p>
+                                <p><a class="nonblock" href="contenidos/Fisica/Fuerza/index.html" target="_blank">Fuerza</a></p>
                                 <p id="u3931-15">&nbsp;</p>
-                                <p><a class="nonblock" href="../contenidos/Fisica/magnitudes/index.html" target="_blank">Magnitudes</a></p>
+                                <p><a class="nonblock" href="contenidos/Fisica/magnitudes/index.html" target="_blank">Magnitudes</a></p>
                                 <p id="u3931-19">&nbsp;</p>
                                 <p id="u3931-21">Materiales para el docente</p>
                                 <p id="u3931-22">&nbsp;</p>
@@ -96,17 +96,17 @@
                                 <!-- content -->
                                 <p id="u3926-2">Recursos Educativos Interactivos</p>
                                 <p id="u3926-3">&nbsp;</p>
-                                <p><a class="nonblock" href="../contenidos/Matematica/Irracionales/index.html" target="_blank">Números Irracionales</a></p>
+                                <p><a class="nonblock" href="contenidos/Matematica/Irracionales/index.html" target="_blank">Números Irracionales</a></p>
                                 <p id="u3926-7">&nbsp;</p>
-                                <p id="u3926-11"><a class="nonblock" href="../contenidos/Matematica/Ecuaciones/index.html" target="_blank">Ecuaciones</a></p>
+                                <p id="u3926-11"><a class="nonblock" href="contenidos/Matematica/Ecuaciones/index.html" target="_blank">Ecuaciones</a></p>
                                 <p id="u3926-12">&nbsp;</p>
-                                <p><a class="nonblock" href="../contenidos/Matematica/Funciones/index.html" target="_blank">Funciones</a></p>
+                                <p><a class="nonblock" href="contenidos/Matematica/Funciones/index.html" target="_blank">Funciones</a></p>
                                 <p id="u3926-16">&nbsp;</p>
-                                <p><a class="nonblock" href="../contenidos/Matematica/FuncionLineal/index.html" target="_blank">Función Lineal</a></p>
+                                <p><a class="nonblock" href="contenidos/Matematica/FuncionLineal/index.html" target="_blank">Función Lineal</a></p>
                                 <p id="u3926-20">&nbsp;</p>
-                                <p><a class="nonblock" href="../contenidos/Matematica/FuncCuadratica/index.html" target="_blank">Función cuadrática</a></p>
+                                <p><a class="nonblock" href="contenidos/Matematica/FuncCuadratica/index.html" target="_blank">Función cuadrática</a></p>
                                 <p id="u3926-24">&nbsp;</p>
-                                <p><a class="nonblock" href="../contenidos/Matematica/Sistemas/index.html" target="_blank">Sistemas de Ecuaciones</a></p>
+                                <p><a class="nonblock" href="contenidos/Matematica/Sistemas/index.html" target="_blank">Sistemas de Ecuaciones</a></p>
                                 <p id="u3926-28">&nbsp;</p>
                                 <p id="u3926-29">&nbsp;</p>
                                 <p id="u3926-31">Materiales para el docente</p>

@@ -259,7 +259,7 @@
                                     <!-- content -->
                                     <p>La UTN Facultad Regional Resistencia ofrece a los interesados a ingresar a nuestras carreras el cursado de un Seminario Universitario, en cuyo recorrido podrás realizar la adaptación a la vida universitaria y poder adquirir las habilidades necesarias para comenzar un nuevo trayecto educativo en la educación superior.</p>
                                     <p>&nbsp;</p>
-                                    <p>Para saber de qué se trata este trayecto visita el espacio <a class="nonblock" href="seminario-universitario.html">Seminario Universitario.</a></p>
+                                    <p>Para saber de qué se trata este trayecto visita el espacio <a class="nonblock" href="seminario_universitario.aspx">Seminario Universitario.</a></p>
                                 </div>
                             </div>
                         </div>
