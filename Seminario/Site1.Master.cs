@@ -130,5 +130,10 @@ namespace Seminario.Pagina
         {
             Response.Redirect("~/Aplicativo/aplicativo_admin_usuarios.aspx");
         }
+
+        protected void btn_regiones_educativas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Aplicativo/aplicativo_admin_regiones_educativas.aspx");
+        }
     }
 }

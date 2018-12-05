@@ -29,5 +29,7 @@ namespace Seminario.Aplicativo
         public virtual DbSet<Secuenciador> Secuenciadores { get; set; }
         public virtual DbSet<Clase> Clases { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<Localidad> Localidades { get; set; }
+        public virtual DbSet<Region_Educativa> Regiones_Educativas { get; set; }
     }
 }

@@ -107,6 +107,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Aplicativo\aplicativo_admin_regiones_educativas.aspx" />
     <Content Include="Aplicativo\aplicativo_admin_usuarios.aspx" />
     <Content Include="Aplicativo\aplicativo_secuenciador.aspx" />
     <Content Include="Aplicativo\aplicativo_secuenciador_listado.aspx" />
@@ -1908,6 +1909,8 @@
     <Content Include="css\m_dulos.css" />
     <Content Include="css\nuestra-propuesta.css" />
     <Content Include="css\nuestras-carreras.css" />
+    <Content Include="css\select2.css" />
+    <Content Include="css\select2.min.css" />
     <Content Include="css\seminario-universitario.css" />
     <Content Include="css\site_global.css" />
     <Content Include="css\turnos.css" />
@@ -1940,6 +1943,8 @@
     <Content Include="js\jquery-1.10.2.min.js" />
     <Content Include="js\jquery.gmaps.js" />
     <Content Include="js\npm.js" />
+    <Content Include="js\select2.full.js" />
+    <Content Include="js\select2.full.min.js" />
     <Content Include="login.aspx" />
     <Content Include="modalidades_de_cursado.aspx" />
     <Content Include="modulos.aspx" />
@@ -2258,6 +2263,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aplicativo\aplicativo_admin_regiones_educativas.aspx.cs">
+      <DependentUpon>aplicativo_admin_regiones_educativas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\aplicativo_admin_regiones_educativas.aspx.designer.cs">
+      <DependentUpon>aplicativo_admin_regiones_educativas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\aplicativo_admin_usuarios.aspx.cs">
       <DependentUpon>aplicativo_admin_usuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2289,6 +2301,9 @@
     <Compile Include="Aplicativo\Clase.cs">
       <DependentUpon>seminarioDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Aplicativo\Localidad.cs">
+      <DependentUpon>seminarioDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\mapa_guardarpuntos.aspx.cs">
       <DependentUpon>mapa_guardarpuntos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2302,6 +2317,9 @@
     </Compile>
     <Compile Include="Aplicativo\mapa_mostrar_ubicaciones.aspx.designer.cs">
       <DependentUpon>mapa_mostrar_ubicaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Region_Educativa.cs">
+      <DependentUpon>seminarioDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\Reportes\reportes.aspx.cs">
       <DependentUpon>reportes.aspx</DependentUpon>

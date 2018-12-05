@@ -10,6 +10,9 @@
     <EntitySet Name="Secuenciadores" EntityType="seminarioDB.Store.Secuenciadores" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Clases" EntityType="seminarioDB.Store.Clases" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Usuarios" EntityType="seminarioDB.Store.Usuarios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Localidades" EntityType="seminarioDB.Store.Localidades" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Regiones_Educativas" EntityType="seminarioDB.Store.Regiones_Educativas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Region_EducativaLocalidad" EntityType="seminarioDB.Store.Region_EducativaLocalidad" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="SecuenciadorClase" Association="seminarioDB.Store.SecuenciadorClase">
       <End Role="Secuenciador" EntitySet="Secuenciadores" />
       <End Role="Clase" EntitySet="Clases" />
@@ -17,6 +20,14 @@
     <AssociationSet Name="UsuarioSecuenciador" Association="seminarioDB.Store.UsuarioSecuenciador">
       <End Role="Usuario" EntitySet="Usuarios" />
       <End Role="Secuenciador" EntitySet="Secuenciadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Region_EducativaLocalidad_Region_Educativa" Association="seminarioDB.Store.FK_Region_EducativaLocalidad_Region_Educativa">
+      <End Role="Region_Educativa" EntitySet="Regiones_Educativas" />
+      <End Role="Region_EducativaLocalidad" EntitySet="Region_EducativaLocalidad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Region_EducativaLocalidad_Localidad" Association="seminarioDB.Store.FK_Region_EducativaLocalidad_Localidad">
+      <End Role="Localidad" EntitySet="Localidades" />
+      <End Role="Region_EducativaLocalidad" EntitySet="Region_EducativaLocalidad" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Ubicaciones">
@@ -83,6 +94,32 @@
     <Property Name="usuario_usuario" Type="nvarchar(max)" Nullable="false" />
     <Property Name="usuario_clave" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="Localidades">
+    <Key>
+      <PropertyRef Name="localidad_id" />
+    </Key>
+    <Property Name="localidad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="localidad_nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="localidad_departamento" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="localidad_tipo" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Regiones_Educativas">
+    <Key>
+      <PropertyRef Name="region_educativa_id" />
+    </Key>
+    <Property Name="region_educativa_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="region_educativa_nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="region_educativa_produccion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="region_educativa_industria" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Region_EducativaLocalidad">
+    <Key>
+      <PropertyRef Name="Region_EducativaLocalidad_Localidad_region_educativa_id" />
+      <PropertyRef Name="Localidades_localidad_id" />
+    </Key>
+    <Property Name="Region_EducativaLocalidad_Localidad_region_educativa_id" Type="int" Nullable="false" />
+    <Property Name="Localidades_localidad_id" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="SecuenciadorClase">
     <End Role="Secuenciador" Type="seminarioDB.Store.Secuenciadores" Multiplicity="1" />
     <End Role="Clase" Type="seminarioDB.Store.Clases" Multiplicity="*" />
@@ -107,6 +144,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Region_EducativaLocalidad_Region_Educativa">
+    <End Role="Region_Educativa" Type="seminarioDB.Store.Regiones_Educativas" Multiplicity="1" />
+    <End Role="Region_EducativaLocalidad" Type="seminarioDB.Store.Region_EducativaLocalidad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region_Educativa">
+        <PropertyRef Name="region_educativa_id" />
+      </Principal>
+      <Dependent Role="Region_EducativaLocalidad">
+        <PropertyRef Name="Region_EducativaLocalidad_Localidad_region_educativa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Region_EducativaLocalidad_Localidad">
+    <End Role="Region_EducativaLocalidad" Type="seminarioDB.Store.Region_EducativaLocalidad" Multiplicity="*" />
+    <End Role="Localidad" Type="seminarioDB.Store.Localidades" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Localidad">
+        <PropertyRef Name="localidad_id" />
+      </Principal>
+      <Dependent Role="Region_EducativaLocalidad">
+        <PropertyRef Name="Localidades_localidad_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -123,6 +184,12 @@
           <AssociationSet Name="UsuarioSecuenciador" Association="seminarioDB.UsuarioSecuenciador">
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Secuenciador" EntitySet="Secuenciadores" />
+          </AssociationSet>
+          <EntitySet Name="Localidades" EntityType="seminarioDB.Localidad" />
+          <EntitySet Name="Regiones_Educativas" EntityType="seminarioDB.Region_Educativa" />
+          <AssociationSet Name="Region_EducativaLocalidad" Association="seminarioDB.Region_EducativaLocalidad">
+            <End Role="Region_Educativa" EntitySet="Regiones_Educativas" />
+            <End Role="Localidad" EntitySet="Localidades" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Ubicacion">
@@ -217,6 +284,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Localidad">
+          <Key>
+            <PropertyRef Name="localidad_id" />
+          </Key>
+          <Property Name="localidad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="localidad_nombre" Type="String" Nullable="false" />
+          <Property Name="localidad_departamento" Type="String" Nullable="false" />
+          <Property Name="localidad_tipo" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Region_Educativa">
+          <Key>
+            <PropertyRef Name="region_educativa_id" />
+          </Key>
+          <Property Name="region_educativa_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="region_educativa_nombre" Type="String" Nullable="false" />
+          <Property Name="region_educativa_produccion" Type="String" Nullable="false" />
+          <Property Name="region_educativa_industria" Type="String" Nullable="false" />
+          <NavigationProperty Name="Localidades" Relationship="seminarioDB.Region_EducativaLocalidad" FromRole="Region_Educativa" ToRole="Localidad" />
+        </EntityType>
+        <Association Name="Region_EducativaLocalidad">
+          <End Type="seminarioDB.Region_Educativa" Role="Region_Educativa" Multiplicity="*" />
+          <End Type="seminarioDB.Localidad" Role="Localidad" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -291,6 +381,34 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Localidades">
+      <EntityTypeMapping TypeName="IsTypeOf(seminarioDB.Localidad)">
+        <MappingFragment StoreEntitySet="Localidades">
+          <ScalarProperty Name="localidad_id" ColumnName="localidad_id" />
+          <ScalarProperty Name="localidad_nombre" ColumnName="localidad_nombre" />
+          <ScalarProperty Name="localidad_departamento" ColumnName="localidad_departamento" />
+          <ScalarProperty Name="localidad_tipo" ColumnName="localidad_tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regiones_Educativas">
+      <EntityTypeMapping TypeName="IsTypeOf(seminarioDB.Region_Educativa)">
+        <MappingFragment StoreEntitySet="Regiones_Educativas">
+          <ScalarProperty Name="region_educativa_id" ColumnName="region_educativa_id" />
+          <ScalarProperty Name="region_educativa_nombre" ColumnName="region_educativa_nombre" />
+          <ScalarProperty Name="region_educativa_produccion" ColumnName="region_educativa_produccion" />
+          <ScalarProperty Name="region_educativa_industria" ColumnName="region_educativa_industria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Region_EducativaLocalidad" TypeName="seminarioDB.Region_EducativaLocalidad" StoreEntitySet="Region_EducativaLocalidad">
+      <EndProperty Name="Region_Educativa">
+        <ScalarProperty Name="region_educativa_id" ColumnName="Region_EducativaLocalidad_Localidad_region_educativa_id" />
+      </EndProperty>
+      <EndProperty Name="Localidad">
+        <ScalarProperty Name="localidad_id" ColumnName="Localidades_localidad_id" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

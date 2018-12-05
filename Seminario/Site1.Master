@@ -158,6 +158,8 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <asp:LinkButton Text="Regiones Educativas" ID="btn_regiones_educativas" OnClick="btn_regiones_educativas_Click" runat="server" /></li>
+                                    <li>
                                         <asp:LinkButton Text="Usuarios" ID="btn_usuarios" OnClick="btn_usuarios_Click" runat="server" /></li>
                                     <li>
                                         <asp:LinkButton Text="Ubicaciones" ID="btn_editar_unbicaciones" OnClick="btn_editar_unbicaciones_Click" runat="server" /></li>

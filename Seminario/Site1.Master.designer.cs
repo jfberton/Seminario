@@ -202,6 +202,15 @@ namespace Seminario.Pagina {
         protected global::System.Web.UI.HtmlControls.HtmlButton btn_institutos_admin;
         
         /// <summary>
+        /// btn_regiones_educativas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_regiones_educativas;
+        
+        /// <summary>
         /// btn_usuarios control.
         /// </summary>
         /// <remarks>

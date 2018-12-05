@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/03/2018 14:51:53
+-- Date Created: 12/04/2018 19:19:05
 -- Generated from EDMX file: D:\Desarrollo\Mios\Seminario\Seminario\Aplicativo\seminarioDB.edmx
 -- --------------------------------------------------
 
@@ -23,6 +23,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_UsuarioSecuenciador]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Secuenciadores] DROP CONSTRAINT [FK_UsuarioSecuenciador];
 GO
+IF OBJECT_ID(N'[dbo].[FK_Region_EducativaLocalidad_Region_Educativa]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Region_EducativaLocalidad] DROP CONSTRAINT [FK_Region_EducativaLocalidad_Region_Educativa];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Region_EducativaLocalidad_Localidad]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Region_EducativaLocalidad] DROP CONSTRAINT [FK_Region_EducativaLocalidad_Localidad];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -39,6 +45,15 @@ IF OBJECT_ID(N'[dbo].[Clases]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Usuarios]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Usuarios];
+GO
+IF OBJECT_ID(N'[dbo].[Localidades]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Localidades];
+GO
+IF OBJECT_ID(N'[dbo].[Regiones_Educativas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Regiones_Educativas];
+GO
+IF OBJECT_ID(N'[dbo].[Region_EducativaLocalidad]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Region_EducativaLocalidad];
 GO
 
 -- --------------------------------------------------
@@ -109,6 +124,31 @@ CREATE TABLE [dbo].[Usuarios] (
 );
 GO
 
+-- Creating table 'Localidades'
+CREATE TABLE [dbo].[Localidades] (
+    [localidad_id] int IDENTITY(1,1) NOT NULL,
+    [localidad_nombre] nvarchar(max)  NOT NULL,
+    [localidad_departamento] nvarchar(max)  NOT NULL,
+    [localidad_tipo] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Regiones_Educativas'
+CREATE TABLE [dbo].[Regiones_Educativas] (
+    [region_educativa_id] int IDENTITY(1,1) NOT NULL,
+    [region_educativa_nombre] nvarchar(max)  NOT NULL,
+    [region_educativa_produccion] nvarchar(max)  NOT NULL,
+    [region_educativa_industria] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Region_EducativaLocalidad'
+CREATE TABLE [dbo].[Region_EducativaLocalidad] (
+    [Region_EducativaLocalidad_Localidad_region_educativa_id] int  NOT NULL,
+    [Localidades_localidad_id] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -135,6 +175,24 @@ GO
 ALTER TABLE [dbo].[Usuarios]
 ADD CONSTRAINT [PK_Usuarios]
     PRIMARY KEY CLUSTERED ([usuario_id] ASC);
+GO
+
+-- Creating primary key on [localidad_id] in table 'Localidades'
+ALTER TABLE [dbo].[Localidades]
+ADD CONSTRAINT [PK_Localidades]
+    PRIMARY KEY CLUSTERED ([localidad_id] ASC);
+GO
+
+-- Creating primary key on [region_educativa_id] in table 'Regiones_Educativas'
+ALTER TABLE [dbo].[Regiones_Educativas]
+ADD CONSTRAINT [PK_Regiones_Educativas]
+    PRIMARY KEY CLUSTERED ([region_educativa_id] ASC);
+GO
+
+-- Creating primary key on [Region_EducativaLocalidad_Localidad_region_educativa_id], [Localidades_localidad_id] in table 'Region_EducativaLocalidad'
+ALTER TABLE [dbo].[Region_EducativaLocalidad]
+ADD CONSTRAINT [PK_Region_EducativaLocalidad]
+    PRIMARY KEY CLUSTERED ([Region_EducativaLocalidad_Localidad_region_educativa_id], [Localidades_localidad_id] ASC);
 GO
 
 -- --------------------------------------------------
@@ -169,6 +227,30 @@ GO
 CREATE INDEX [IX_FK_UsuarioSecuenciador]
 ON [dbo].[Secuenciadores]
     ([usuario_id]);
+GO
+
+-- Creating foreign key on [Region_EducativaLocalidad_Localidad_region_educativa_id] in table 'Region_EducativaLocalidad'
+ALTER TABLE [dbo].[Region_EducativaLocalidad]
+ADD CONSTRAINT [FK_Region_EducativaLocalidad_Region_Educativa]
+    FOREIGN KEY ([Region_EducativaLocalidad_Localidad_region_educativa_id])
+    REFERENCES [dbo].[Regiones_Educativas]
+        ([region_educativa_id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Localidades_localidad_id] in table 'Region_EducativaLocalidad'
+ALTER TABLE [dbo].[Region_EducativaLocalidad]
+ADD CONSTRAINT [FK_Region_EducativaLocalidad_Localidad]
+    FOREIGN KEY ([Localidades_localidad_id])
+    REFERENCES [dbo].[Localidades]
+        ([localidad_id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Region_EducativaLocalidad_Localidad'
+CREATE INDEX [IX_FK_Region_EducativaLocalidad_Localidad]
+ON [dbo].[Region_EducativaLocalidad]
+    ([Localidades_localidad_id]);
 GO
 
 -- --------------------------------------------------
