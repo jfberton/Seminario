@@ -14,9 +14,18 @@ namespace Seminario.Aplicativo
     
     public partial class Localidad
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Localidad()
+        {
+            this.Establecimientos = new HashSet<Establecimiento>();
+        }
+    
         public int localidad_id { get; set; }
         public string localidad_nombre { get; set; }
         public string localidad_departamento { get; set; }
         public string localidad_tipo { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Establecimiento> Establecimientos { get; set; }
     }
 }

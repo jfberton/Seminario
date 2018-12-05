@@ -31,5 +31,6 @@ namespace Seminario.Aplicativo
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<Localidad> Localidades { get; set; }
         public virtual DbSet<Region_Educativa> Regiones_Educativas { get; set; }
+        public virtual DbSet<Establecimiento> Establecimientos { get; set; }
     }
 }

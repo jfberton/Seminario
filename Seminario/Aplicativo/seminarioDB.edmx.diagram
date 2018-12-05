@@ -5,15 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d1445338afec4738b965b078bb510588" Name="Diagram1" ZoomLevel="106" >
-        <EntityTypeShape EntityType="seminarioDB.Ubicacion" Width="2.625" PointX="1.75" PointY="0.875" />
+        <EntityTypeShape EntityType="seminarioDB.Ubicacion" Width="2.625" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="seminarioDB.Secuenciador" Width="4.375" PointX="6.625" PointY="1.5" />
         <EntityTypeShape EntityType="seminarioDB.Clase" Width="2.625" PointX="6.875" PointY="6.75" />
         <AssociationConnector Association="seminarioDB.SecuenciadorClase" />
         <EntityTypeShape EntityType="seminarioDB.Usuario" Width="1.5" PointX="12" PointY="3.125" />
         <AssociationConnector Association="seminarioDB.UsuarioSecuenciador" />
         <EntityTypeShape EntityType="seminarioDB.Localidad" Width="2" PointX="3.625" PointY="4.5" />
-        <EntityTypeShape EntityType="seminarioDB.Region_Educativa" Width="2.25" PointX="3.25" PointY="7" />
+        <EntityTypeShape EntityType="seminarioDB.Region_Educativa" Width="2.25" PointX="2.75" PointY="7" />
         <AssociationConnector Association="seminarioDB.Region_EducativaLocalidad" />
+        <EntityTypeShape EntityType="seminarioDB.Establecimiento" Width="2.75" PointX="3.125" PointY="10.25" />
+        <AssociationConnector Association="seminarioDB.Region_EducativaEstablecimiento" />
+        <AssociationConnector Association="seminarioDB.LocalidadEstablecimiento" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

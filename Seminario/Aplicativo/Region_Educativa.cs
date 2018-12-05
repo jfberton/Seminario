@@ -18,6 +18,7 @@ namespace Seminario.Aplicativo
         public Region_Educativa()
         {
             this.Localidades = new HashSet<Localidad>();
+            this.Establecimientos = new HashSet<Establecimiento>();
         }
     
         public int region_educativa_id { get; set; }
@@ -27,5 +28,7 @@ namespace Seminario.Aplicativo
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Localidad> Localidades { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Establecimiento> Establecimientos { get; set; }
     }
 }

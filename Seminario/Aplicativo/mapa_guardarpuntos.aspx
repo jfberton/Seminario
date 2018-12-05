@@ -5,22 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
-    <!-- Bootstrap y JQuery -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../css/bootstrap-theme.min.css" rel="stylesheet" />
-
-
-    <!-- API Google maps-->
-    <script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyAErdqW0B1ui1G-SeDOu_rk5nzU2TCLZcE'></script>
-
-    <!-- librerias js -->
-    <script src="../js/jquery-1.10.2.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/locationpicker.jquery.js"></script>
-    <style>
-        .pac-container{z-index:2000 !important;}
-    </style>
-
+   
     <title>O    btener coordenadas del punto</title>
 
 </head>

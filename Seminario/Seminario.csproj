@@ -107,6 +107,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Aplicativo\aplicativo_admin_establecimientos.aspx" />
     <Content Include="Aplicativo\aplicativo_admin_regiones_educativas.aspx" />
     <Content Include="Aplicativo\aplicativo_admin_usuarios.aspx" />
     <Content Include="Aplicativo\aplicativo_secuenciador.aspx" />
@@ -2263,6 +2264,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aplicativo\aplicativo_admin_establecimientos.aspx.cs">
+      <DependentUpon>aplicativo_admin_establecimientos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\aplicativo_admin_establecimientos.aspx.designer.cs">
+      <DependentUpon>aplicativo_admin_establecimientos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\aplicativo_admin_regiones_educativas.aspx.cs">
       <DependentUpon>aplicativo_admin_regiones_educativas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2299,6 +2307,9 @@
       <DependentUpon>aplicativo_ubicacion_instituciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\Clase.cs">
+      <DependentUpon>seminarioDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Establecimiento.cs">
       <DependentUpon>seminarioDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\Localidad.cs">

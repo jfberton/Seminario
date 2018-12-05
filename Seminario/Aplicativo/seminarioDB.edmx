@@ -12,6 +12,7 @@
     <EntitySet Name="Usuarios" EntityType="seminarioDB.Store.Usuarios" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Localidades" EntityType="seminarioDB.Store.Localidades" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Regiones_Educativas" EntityType="seminarioDB.Store.Regiones_Educativas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Establecimientos" EntityType="seminarioDB.Store.Establecimientos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Region_EducativaLocalidad" EntityType="seminarioDB.Store.Region_EducativaLocalidad" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="SecuenciadorClase" Association="seminarioDB.Store.SecuenciadorClase">
       <End Role="Secuenciador" EntitySet="Secuenciadores" />
@@ -28,6 +29,14 @@
     <AssociationSet Name="FK_Region_EducativaLocalidad_Localidad" Association="seminarioDB.Store.FK_Region_EducativaLocalidad_Localidad">
       <End Role="Localidad" EntitySet="Localidades" />
       <End Role="Region_EducativaLocalidad" EntitySet="Region_EducativaLocalidad" />
+    </AssociationSet>
+    <AssociationSet Name="Region_EducativaEstablecimiento" Association="seminarioDB.Store.Region_EducativaEstablecimiento">
+      <End Role="Region_Educativa" EntitySet="Regiones_Educativas" />
+      <End Role="Establecimiento" EntitySet="Establecimientos" />
+    </AssociationSet>
+    <AssociationSet Name="LocalidadEstablecimiento" Association="seminarioDB.Store.LocalidadEstablecimiento">
+      <End Role="Localidad" EntitySet="Localidades" />
+      <End Role="Establecimiento" EntitySet="Establecimientos" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Ubicaciones">
@@ -112,6 +121,25 @@
     <Property Name="region_educativa_produccion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="region_educativa_industria" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="Establecimientos">
+    <Key>
+      <PropertyRef Name="establecimiento_id" />
+    </Key>
+    <Property Name="establecimiento_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="region_educativa_id" Type="int" Nullable="false" />
+    <Property Name="establecimiento_nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="establecimiento_ambito" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="establecimiento_modalidad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="establecimiento_sector" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="localidad_id" Type="int" Nullable="false" />
+    <Property Name="establecimiento_direccion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="establecimiento_telefono" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="establecimiento_mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="establecimiento_web" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="establecimiento_orientaciones" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="establecimiento_longitud" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="establecimiento_latitud" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="Region_EducativaLocalidad">
     <Key>
       <PropertyRef Name="Region_EducativaLocalidad_Localidad_region_educativa_id" />
@@ -141,6 +169,30 @@
       </Principal>
       <Dependent Role="Secuenciador">
         <PropertyRef Name="usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Region_EducativaEstablecimiento">
+    <End Role="Region_Educativa" Type="seminarioDB.Store.Regiones_Educativas" Multiplicity="1" />
+    <End Role="Establecimiento" Type="seminarioDB.Store.Establecimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region_Educativa">
+        <PropertyRef Name="region_educativa_id" />
+      </Principal>
+      <Dependent Role="Establecimiento">
+        <PropertyRef Name="region_educativa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LocalidadEstablecimiento">
+    <End Role="Localidad" Type="seminarioDB.Store.Localidades" Multiplicity="1" />
+    <End Role="Establecimiento" Type="seminarioDB.Store.Establecimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Localidad">
+        <PropertyRef Name="localidad_id" />
+      </Principal>
+      <Dependent Role="Establecimiento">
+        <PropertyRef Name="localidad_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -191,23 +243,32 @@
             <End Role="Region_Educativa" EntitySet="Regiones_Educativas" />
             <End Role="Localidad" EntitySet="Localidades" />
           </AssociationSet>
+          <EntitySet Name="Establecimientos" EntityType="seminarioDB.Establecimiento" />
+          <AssociationSet Name="Region_EducativaEstablecimiento" Association="seminarioDB.Region_EducativaEstablecimiento">
+            <End Role="Region_Educativa" EntitySet="Regiones_Educativas" />
+            <End Role="Establecimiento" EntitySet="Establecimientos" />
+          </AssociationSet>
+          <AssociationSet Name="LocalidadEstablecimiento" Association="seminarioDB.LocalidadEstablecimiento">
+            <End Role="Localidad" EntitySet="Localidades" />
+            <End Role="Establecimiento" EntitySet="Establecimientos" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Ubicacion">
           <Key>
             <PropertyRef Name="ubicacion_Id" />
           </Key>
           <Property Name="ubicacion_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ubicacion_categoria" Type="String" Nullable="false" />
-          <Property Name="ubicacion_nombre_lugar" Type="String" Nullable="false" />
-          <Property Name="ubicacion_descripcion" Type="String" Nullable="false" />
-          <Property Name="ubicacion_direccion" Type="String" Nullable="false" />
-          <Property Name="ubicacion_latitud" Type="String" Nullable="false" />
-          <Property Name="ubicacion_longitud" Type="String" Nullable="false" />
+          <Property Name="ubicacion_categoria" Nullable="false" Type="String" />
+          <Property Name="ubicacion_nombre_lugar" Nullable="false" Type="String" />
+          <Property Name="ubicacion_descripcion" Nullable="false" Type="String" />
+          <Property Name="ubicacion_direccion" Nullable="false" Type="String" />
+          <Property Name="ubicacion_latitud" Nullable="false" Type="String" />
+          <Property Name="ubicacion_longitud" Nullable="false" Type="String" />
           <Property Name="ubicacion_telefono" Type="String" Nullable="false" />
           <Property Name="ubicacion_web" Type="String" Nullable="false" />
           <Property Name="ubicacion_mail" Type="String" Nullable="false" />
-          <Property Name="ubicacion_face" Type="String" Nullable="false" />
-          <Property Name="ubicacion_twitter" Type="String" Nullable="false" />
+          <Property Name="ubicacion_face" Nullable="false" Type="String" />
+          <Property Name="ubicacion_twitter" Nullable="false" Type="String" />
         </EntityType>
         <EntityType Name="Secuenciador">
           <Key>
@@ -292,6 +353,7 @@
           <Property Name="localidad_nombre" Type="String" Nullable="false" />
           <Property Name="localidad_departamento" Type="String" Nullable="false" />
           <Property Name="localidad_tipo" Type="String" Nullable="false" />
+          <NavigationProperty Name="Establecimientos" Relationship="seminarioDB.LocalidadEstablecimiento" FromRole="Localidad" ToRole="Establecimiento" />
         </EntityType>
         <EntityType Name="Region_Educativa">
           <Key>
@@ -302,10 +364,56 @@
           <Property Name="region_educativa_produccion" Type="String" Nullable="false" />
           <Property Name="region_educativa_industria" Type="String" Nullable="false" />
           <NavigationProperty Name="Localidades" Relationship="seminarioDB.Region_EducativaLocalidad" FromRole="Region_Educativa" ToRole="Localidad" />
+          <NavigationProperty Name="Establecimientos" Relationship="seminarioDB.Region_EducativaEstablecimiento" FromRole="Region_Educativa" ToRole="Establecimiento" />
         </EntityType>
         <Association Name="Region_EducativaLocalidad">
           <End Type="seminarioDB.Region_Educativa" Role="Region_Educativa" Multiplicity="*" />
           <End Type="seminarioDB.Localidad" Role="Localidad" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Establecimiento">
+          <Key>
+            <PropertyRef Name="establecimiento_id" />
+          </Key>
+          <Property Name="establecimiento_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="region_educativa_id" Type="Int32" Nullable="false" />
+          <Property Name="establecimiento_nombre" Type="String" Nullable="false" />
+          <Property Name="establecimiento_ambito" Type="String" Nullable="false" />
+          <Property Name="establecimiento_modalidad" Type="String" Nullable="false" />
+          <Property Name="establecimiento_sector" Type="String" Nullable="false" />
+          <Property Name="localidad_id" Type="Int32" Nullable="false" />
+          <Property Name="establecimiento_direccion" Type="String" Nullable="false" />
+          <Property Name="establecimiento_telefono" Type="String" Nullable="false" />
+          <Property Name="establecimiento_mail" Type="String" Nullable="false" />
+          <Property Name="establecimiento_web" Type="String" Nullable="false" />
+          <NavigationProperty Name="Region_Educativa" Relationship="seminarioDB.Region_EducativaEstablecimiento" FromRole="Establecimiento" ToRole="Region_Educativa" />
+          <Property Name="establecimiento_orientaciones" Type="String" Nullable="false" />
+          <NavigationProperty Name="Localidad" Relationship="seminarioDB.LocalidadEstablecimiento" FromRole="Establecimiento" ToRole="Localidad" />
+          <Property Name="establecimiento_longitud" Type="String" Nullable="false" />
+          <Property Name="establecimiento_latitud" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="Region_EducativaEstablecimiento">
+          <End Type="seminarioDB.Region_Educativa" Role="Region_Educativa" Multiplicity="1" />
+          <End Type="seminarioDB.Establecimiento" Role="Establecimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region_Educativa">
+              <PropertyRef Name="region_educativa_id" />
+            </Principal>
+            <Dependent Role="Establecimiento">
+              <PropertyRef Name="region_educativa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LocalidadEstablecimiento">
+          <End Type="seminarioDB.Localidad" Role="Localidad" Multiplicity="1" />
+          <End Type="seminarioDB.Establecimiento" Role="Establecimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localidad">
+              <PropertyRef Name="localidad_id" />
+            </Principal>
+            <Dependent Role="Establecimiento">
+              <PropertyRef Name="localidad_id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -398,6 +506,26 @@
           <ScalarProperty Name="region_educativa_nombre" ColumnName="region_educativa_nombre" />
           <ScalarProperty Name="region_educativa_produccion" ColumnName="region_educativa_produccion" />
           <ScalarProperty Name="region_educativa_industria" ColumnName="region_educativa_industria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Establecimientos">
+      <EntityTypeMapping TypeName="IsTypeOf(seminarioDB.Establecimiento)">
+        <MappingFragment StoreEntitySet="Establecimientos">
+          <ScalarProperty Name="establecimiento_id" ColumnName="establecimiento_id" />
+          <ScalarProperty Name="region_educativa_id" ColumnName="region_educativa_id" />
+          <ScalarProperty Name="establecimiento_nombre" ColumnName="establecimiento_nombre" />
+          <ScalarProperty Name="establecimiento_ambito" ColumnName="establecimiento_ambito" />
+          <ScalarProperty Name="establecimiento_modalidad" ColumnName="establecimiento_modalidad" />
+          <ScalarProperty Name="establecimiento_sector" ColumnName="establecimiento_sector" />
+          <ScalarProperty Name="localidad_id" ColumnName="localidad_id" />
+          <ScalarProperty Name="establecimiento_direccion" ColumnName="establecimiento_direccion" />
+          <ScalarProperty Name="establecimiento_telefono" ColumnName="establecimiento_telefono" />
+          <ScalarProperty Name="establecimiento_mail" ColumnName="establecimiento_mail" />
+          <ScalarProperty Name="establecimiento_web" ColumnName="establecimiento_web" />
+          <ScalarProperty Name="establecimiento_orientaciones" ColumnName="establecimiento_orientaciones" />
+          <ScalarProperty Name="establecimiento_longitud" ColumnName="establecimiento_longitud" />
+          <ScalarProperty Name="establecimiento_latitud" ColumnName="establecimiento_latitud" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

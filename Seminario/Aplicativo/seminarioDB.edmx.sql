@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/04/2018 19:19:05
--- Generated from EDMX file: D:\Desarrollo\Mios\Seminario\Seminario\Aplicativo\seminarioDB.edmx
+-- Date Created: 12/05/2018 11:10:46
+-- Generated from EDMX file: F:\Seminario\Seminario\Aplicativo\seminarioDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -29,6 +29,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_Region_EducativaLocalidad_Localidad]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Region_EducativaLocalidad] DROP CONSTRAINT [FK_Region_EducativaLocalidad_Localidad];
 GO
+IF OBJECT_ID(N'[dbo].[FK_Region_EducativaEstablecimiento]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Establecimientos] DROP CONSTRAINT [FK_Region_EducativaEstablecimiento];
+GO
+IF OBJECT_ID(N'[dbo].[FK_LocalidadEstablecimiento]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Establecimientos] DROP CONSTRAINT [FK_LocalidadEstablecimiento];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -51,6 +57,9 @@ IF OBJECT_ID(N'[dbo].[Localidades]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Regiones_Educativas]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Regiones_Educativas];
+GO
+IF OBJECT_ID(N'[dbo].[Establecimientos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Establecimientos];
 GO
 IF OBJECT_ID(N'[dbo].[Region_EducativaLocalidad]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Region_EducativaLocalidad];
@@ -142,6 +151,25 @@ CREATE TABLE [dbo].[Regiones_Educativas] (
 );
 GO
 
+-- Creating table 'Establecimientos'
+CREATE TABLE [dbo].[Establecimientos] (
+    [establecimiento_id] int IDENTITY(1,1) NOT NULL,
+    [region_educativa_id] int  NOT NULL,
+    [establecimiento_nombre] nvarchar(max)  NOT NULL,
+    [establecimiento_ambito] nvarchar(max)  NOT NULL,
+    [establecimiento_modalidad] nvarchar(max)  NOT NULL,
+    [establecimiento_sector] nvarchar(max)  NOT NULL,
+    [localidad_id] int  NOT NULL,
+    [establecimiento_direccion] nvarchar(max)  NOT NULL,
+    [establecimiento_telefono] nvarchar(max)  NOT NULL,
+    [establecimiento_mail] nvarchar(max)  NOT NULL,
+    [establecimiento_web] nvarchar(max)  NOT NULL,
+    [establecimiento_orientaciones] nvarchar(max)  NOT NULL,
+    [establecimiento_longitud] nvarchar(max)  NOT NULL,
+    [establecimiento_latitud] nvarchar(max)  NOT NULL
+);
+GO
+
 -- Creating table 'Region_EducativaLocalidad'
 CREATE TABLE [dbo].[Region_EducativaLocalidad] (
     [Region_EducativaLocalidad_Localidad_region_educativa_id] int  NOT NULL,
@@ -187,6 +215,12 @@ GO
 ALTER TABLE [dbo].[Regiones_Educativas]
 ADD CONSTRAINT [PK_Regiones_Educativas]
     PRIMARY KEY CLUSTERED ([region_educativa_id] ASC);
+GO
+
+-- Creating primary key on [establecimiento_id] in table 'Establecimientos'
+ALTER TABLE [dbo].[Establecimientos]
+ADD CONSTRAINT [PK_Establecimientos]
+    PRIMARY KEY CLUSTERED ([establecimiento_id] ASC);
 GO
 
 -- Creating primary key on [Region_EducativaLocalidad_Localidad_region_educativa_id], [Localidades_localidad_id] in table 'Region_EducativaLocalidad'
@@ -251,6 +285,36 @@ GO
 CREATE INDEX [IX_FK_Region_EducativaLocalidad_Localidad]
 ON [dbo].[Region_EducativaLocalidad]
     ([Localidades_localidad_id]);
+GO
+
+-- Creating foreign key on [region_educativa_id] in table 'Establecimientos'
+ALTER TABLE [dbo].[Establecimientos]
+ADD CONSTRAINT [FK_Region_EducativaEstablecimiento]
+    FOREIGN KEY ([region_educativa_id])
+    REFERENCES [dbo].[Regiones_Educativas]
+        ([region_educativa_id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Region_EducativaEstablecimiento'
+CREATE INDEX [IX_FK_Region_EducativaEstablecimiento]
+ON [dbo].[Establecimientos]
+    ([region_educativa_id]);
+GO
+
+-- Creating foreign key on [localidad_id] in table 'Establecimientos'
+ALTER TABLE [dbo].[Establecimientos]
+ADD CONSTRAINT [FK_LocalidadEstablecimiento]
+    FOREIGN KEY ([localidad_id])
+    REFERENCES [dbo].[Localidades]
+        ([localidad_id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_LocalidadEstablecimiento'
+CREATE INDEX [IX_FK_LocalidadEstablecimiento]
+ON [dbo].[Establecimientos]
+    ([localidad_id]);
 GO
 
 -- --------------------------------------------------
