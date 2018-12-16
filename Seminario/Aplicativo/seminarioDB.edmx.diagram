@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d1445338afec4738b965b078bb510588" Name="Diagram1" ZoomLevel="106" >
+      <Diagram DiagramId="d1445338afec4738b965b078bb510588" Name="Diagram1" ZoomLevel="80" >
         <EntityTypeShape EntityType="seminarioDB.Ubicacion" Width="2.625" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="seminarioDB.Secuenciador" Width="4.375" PointX="6.625" PointY="1.5" />
         <EntityTypeShape EntityType="seminarioDB.Clase" Width="2.625" PointX="6.875" PointY="6.75" />
@@ -17,6 +17,10 @@
         <EntityTypeShape EntityType="seminarioDB.Establecimiento" Width="2.75" PointX="3.125" PointY="10.25" />
         <AssociationConnector Association="seminarioDB.Region_EducativaEstablecimiento" />
         <AssociationConnector Association="seminarioDB.LocalidadEstablecimiento" />
+        <EntityTypeShape EntityType="seminarioDB.Modalidad" Width="1.5" PointX="7.25" PointY="11.375" />
+        <EntityTypeShape EntityType="seminarioDB.Ambito" Width="1.5" PointX="7" PointY="13.25" />
+        <EntityTypeShape EntityType="seminarioDB.Sector" Width="1.5" PointX="9.375" PointY="12.125" />
+        <EntityTypeShape EntityType="seminarioDB.Orientacion" Width="1.5" PointX="9" PointY="10.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

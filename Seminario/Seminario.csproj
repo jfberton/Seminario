@@ -111,11 +111,11 @@
     <Content Include="Aplicativo\aplicativo_admin_regiones_educativas.aspx" />
     <Content Include="Aplicativo\aplicativo_admin_usuarios.aspx" />
     <Content Include="Aplicativo\aplicativo_secuenciador.aspx" />
-    <Content Include="Aplicativo\aplicativo_secuenciador_listado.aspx" />
+    <Content Include="aplicativo_secuenciador_listado.aspx" />
     <Content Include="Aplicativo\aplicativo_ubicacion_instituciones.aspx" />
     <Content Include="Aplicativo\mapa_guardarpuntos.aspx" />
     <Content Include="Aplicativo\mapa_mostrar_ubicaciones.aspx" />
-    <Content Include="Aplicativo\Reportes\reportes.aspx" />
+    <Content Include="Reportes\reportes.aspx" />
     <Content Include="Aplicativo\secuenciador_alta.aspx" />
     <Content Include="Aplicativo\seminarioDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -2007,15 +2007,15 @@
     <Content Include="assets\vectores.pdf" />
     <Content Include="contenidos\Fisica\Fuerza\content.data" />
     <Content Include="Aplicativo\Site1.Master" />
-    <Content Include="Aplicativo\Reportes\secuenciador.xsc">
+    <Content Include="Reportes\secuenciador.xsc">
       <DependentUpon>secuenciador.xsd</DependentUpon>
     </Content>
-    <None Include="Aplicativo\Reportes\secuenciador.xsd">
+    <None Include="Reportes\secuenciador.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>secuenciador.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Aplicativo\Reportes\secuenciador.xss">
+    <Content Include="Reportes\secuenciador.xss">
       <DependentUpon>secuenciador.xsd</DependentUpon>
     </Content>
     <None Include="contenidos\Fisica\Fuerza\content.xsd">
@@ -2264,6 +2264,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aplicativo\Ambito.cs">
+      <DependentUpon>seminarioDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\aplicativo_admin_establecimientos.aspx.cs">
       <DependentUpon>aplicativo_admin_establecimientos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2292,11 +2295,11 @@
     <Compile Include="Aplicativo\aplicativo_secuenciador.aspx.designer.cs">
       <DependentUpon>aplicativo_secuenciador.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Aplicativo\aplicativo_secuenciador_listado.aspx.cs">
+    <Compile Include="aplicativo_secuenciador_listado.aspx.cs">
       <DependentUpon>aplicativo_secuenciador_listado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Aplicativo\aplicativo_secuenciador_listado.aspx.designer.cs">
+    <Compile Include="aplicativo_secuenciador_listado.aspx.designer.cs">
       <DependentUpon>aplicativo_secuenciador_listado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\aplicativo_ubicacion_instituciones.aspx.cs">
@@ -2329,20 +2332,29 @@
     <Compile Include="Aplicativo\mapa_mostrar_ubicaciones.aspx.designer.cs">
       <DependentUpon>mapa_mostrar_ubicaciones.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aplicativo\Modalidad.cs">
+      <DependentUpon>seminarioDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Orientacion.cs">
+      <DependentUpon>seminarioDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\Region_Educativa.cs">
       <DependentUpon>seminarioDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Aplicativo\Reportes\reportes.aspx.cs">
+    <Compile Include="Reportes\reportes.aspx.cs">
       <DependentUpon>reportes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Aplicativo\Reportes\reportes.aspx.designer.cs">
+    <Compile Include="Reportes\reportes.aspx.designer.cs">
       <DependentUpon>reportes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Aplicativo\Reportes\secuenciador.Designer.cs">
+    <Compile Include="Reportes\secuenciador.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>secuenciador.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Sector.cs">
+      <DependentUpon>seminarioDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\Secuenciador.cs">
       <DependentUpon>seminarioDB.tt</DependentUpon>
@@ -2487,7 +2499,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Aplicativo\Reportes\secuenciador.rdlc" />
+    <EmbeddedResource Include="Reportes\secuenciador.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

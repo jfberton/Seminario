@@ -160,10 +160,10 @@
                                 <asp:Button Text="Articulación" CssClass="btn btn-warning" ID="btn_articulacion" OnClick="btn_articulacion_Click" runat="server" />
                             </div>
                             <div class="btn-group" role="group" runat="server" id="div_institutos">
-                                <asp:Button Text="Institutos" CssClass="btn btn-mapa" ID="btn_institutos" OnClick="btn_institutos_Click" runat="server" />
+                                <asp:Button Text="Establecimientos" CssClass="btn btn-mapa" ID="btn_institutos" OnClick="btn_institutos_Click" runat="server" />
                             </div>
                             <div class="btn-group" role="group" runat="server" id="div_secuenciador">
-                                <asp:Button Text="Secuenciador" CssClass="btn btn-default" ID="btn_secuenciador" OnClick="btn_secuenciador_Click" runat="server" />
+                                <asp:Button Text="Secuencia" CssClass="btn btn-default" ID="btn_secuenciador" OnClick="btn_secuenciador_Click" runat="server" />
                             </div>
                             <div class="btn-group" role="group" runat="server" id="div_admin">
                                 <button type="button" class="btn btn-mapa dropdown-toggle" data-toggle="dropdown" runat="server" id="btn_institutos_admin" aria-haspopup="true" aria-expanded="false">
@@ -175,7 +175,7 @@
                                     <li>
                                         <asp:LinkButton Text="Usuarios" ID="btn_usuarios" OnClick="btn_usuarios_Click" runat="server" /></li>
                                     <li>
-                                        <asp:LinkButton Text="Ubicaciones" ID="btn_editar_unbicaciones" OnClick="btn_editar_unbicaciones_Click" runat="server" /></li>
+                                        <asp:LinkButton Text="Establecimientos" ID="btn_editar_unbicaciones" OnClick="btn_editar_unbicaciones_Click" runat="server" /></li>
                                 </ul>
                             </div>
                         </div>

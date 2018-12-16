@@ -36,6 +36,93 @@
             data-event-mousewheel="true"
             data-zoom="14" role="map" class="gmaps">
 
+
+            <div class="alert alert-info">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">Reg. educ.:</span>
+                            <select runat="server" id="tb_select_filtro_regiones" style="width: 100%" multiple="false">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">Ámbito:</span>
+                            <select runat="server" id="tb_select_filtro_ambito" style="width: 100%" multiple="false">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">Sector:</span>
+                            <select runat="server" id="tb_select_filtro_sector" style="width: 100%" multiple="false">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">Localidad:</span>
+                            <select runat="server" id="tb_select_filtro_localidad" style="width: 100%" multiple="false">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">Modalidad:</span>
+                            <select runat="server" id="tb_select_filtro_modalidad" style="width: 100%" multiple="false">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Orientaciones:</span>
+                                    <select runat="server" id="tb_select_filtro_orientaciones" style="width: 100%" multiple="true">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Otras orientaciones:</span>
+                                    <input type="text" runat="server" id="tb_filtro_otras_orientaciones" placeholder="Otras orientaciones" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">Nombre:</span>
+                            <input type="text" runat="server" id="tb_filtro_nombre_lugar" placeholder="Ingrese nombre del instituto." class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <asp:Button Text="Buscar" ID="btn_filtrar_establecimientos" CssClass="btn btn-default" OnClick="btn_filtrar_establecimientos_Click" runat="server" />
+                    </div>
+                </div>
+            </div>
+
+            <asp:GridView runat="server" ID="gv_ubicaciones" AutoGenerateColumns="false" CssClass="table-responsive table table-bordered" OnRowCommand="SeleccionarRegistro">
+                <Columns>
+                    <asp:BoundField DataField="id" HeaderText="ID" />
+                    <asp:BoundField DataField="region" HeaderText="Region" />
+                    <asp:BoundField DataField="ambito" HeaderText="Ambito" />
+                    <asp:BoundField DataField="nivel" HeaderText="Nivel" />
+                    <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+                    <asp:BoundField DataField="sector" HeaderText="Sector" />
+                    <asp:BoundField DataField="localidad" HeaderText="Localidad" />
+                </Columns>
+            </asp:GridView>
+
+
             <asp:Repeater runat="server" ID="repetidor">
                 <ItemTemplate>
                     <div

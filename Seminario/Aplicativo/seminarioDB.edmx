@@ -13,6 +13,10 @@
     <EntitySet Name="Localidades" EntityType="seminarioDB.Store.Localidades" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Regiones_Educativas" EntityType="seminarioDB.Store.Regiones_Educativas" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Establecimientos" EntityType="seminarioDB.Store.Establecimientos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Modalidades" EntityType="seminarioDB.Store.Modalidades" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ambitos" EntityType="seminarioDB.Store.Ambitos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sectores" EntityType="seminarioDB.Store.Sectores" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orientaciones" EntityType="seminarioDB.Store.Orientaciones" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Region_EducativaLocalidad" EntityType="seminarioDB.Store.Region_EducativaLocalidad" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="SecuenciadorClase" Association="seminarioDB.Store.SecuenciadorClase">
       <End Role="Secuenciador" EntitySet="Secuenciadores" />
@@ -140,6 +144,34 @@
     <Property Name="establecimiento_longitud" Type="nvarchar(max)" Nullable="false" />
     <Property Name="establecimiento_latitud" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="Modalidades">
+    <Key>
+      <PropertyRef Name="modalidad_id" />
+    </Key>
+    <Property Name="modalidad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="modalidad_nombre" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ambitos">
+    <Key>
+      <PropertyRef Name="ambito_id" />
+    </Key>
+    <Property Name="ambito_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ambito_nombre" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sectores">
+    <Key>
+      <PropertyRef Name="sector_id" />
+    </Key>
+    <Property Name="sector_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sector_nombre" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orientaciones">
+    <Key>
+      <PropertyRef Name="orientacion_id" />
+    </Key>
+    <Property Name="orientacion_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orientacion_nombre" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="Region_EducativaLocalidad">
     <Key>
       <PropertyRef Name="Region_EducativaLocalidad_Localidad_region_educativa_id" />
@@ -252,6 +284,10 @@
             <End Role="Localidad" EntitySet="Localidades" />
             <End Role="Establecimiento" EntitySet="Establecimientos" />
           </AssociationSet>
+          <EntitySet Name="Modalidades" EntityType="seminarioDB.Modalidad" />
+          <EntitySet Name="Ambitos" EntityType="seminarioDB.Ambito" />
+          <EntitySet Name="Sectores" EntityType="seminarioDB.Sector" />
+          <EntitySet Name="Orientaciones" EntityType="seminarioDB.Orientacion" />
         </EntityContainer>
         <EntityType Name="Ubicacion">
           <Key>
@@ -415,6 +451,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Modalidad">
+          <Key>
+            <PropertyRef Name="modalidad_id" />
+          </Key>
+          <Property Name="modalidad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="modalidad_nombre" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ambito">
+          <Key>
+            <PropertyRef Name="ambito_id" />
+          </Key>
+          <Property Name="ambito_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ambito_nombre" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sector">
+          <Key>
+            <PropertyRef Name="sector_id" />
+          </Key>
+          <Property Name="sector_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sector_nombre" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orientacion">
+          <Key>
+            <PropertyRef Name="orientacion_id" />
+          </Key>
+          <Property Name="orientacion_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orientacion_nombre" Type="String" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -526,6 +590,38 @@
           <ScalarProperty Name="establecimiento_orientaciones" ColumnName="establecimiento_orientaciones" />
           <ScalarProperty Name="establecimiento_longitud" ColumnName="establecimiento_longitud" />
           <ScalarProperty Name="establecimiento_latitud" ColumnName="establecimiento_latitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modalidades">
+      <EntityTypeMapping TypeName="IsTypeOf(seminarioDB.Modalidad)">
+        <MappingFragment StoreEntitySet="Modalidades">
+          <ScalarProperty Name="modalidad_id" ColumnName="modalidad_id" />
+          <ScalarProperty Name="modalidad_nombre" ColumnName="modalidad_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ambitos">
+      <EntityTypeMapping TypeName="IsTypeOf(seminarioDB.Ambito)">
+        <MappingFragment StoreEntitySet="Ambitos">
+          <ScalarProperty Name="ambito_id" ColumnName="ambito_id" />
+          <ScalarProperty Name="ambito_nombre" ColumnName="ambito_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sectores">
+      <EntityTypeMapping TypeName="IsTypeOf(seminarioDB.Sector)">
+        <MappingFragment StoreEntitySet="Sectores">
+          <ScalarProperty Name="sector_id" ColumnName="sector_id" />
+          <ScalarProperty Name="sector_nombre" ColumnName="sector_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orientaciones">
+      <EntityTypeMapping TypeName="IsTypeOf(seminarioDB.Orientacion)">
+        <MappingFragment StoreEntitySet="Orientaciones">
+          <ScalarProperty Name="orientacion_id" ColumnName="orientacion_id" />
+          <ScalarProperty Name="orientacion_nombre" ColumnName="orientacion_nombre" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -30,7 +30,6 @@ namespace Seminario.Aplicativo
                     lbl_usuario_logueado.Text = "Invitado";
                     lbl_iniciar_cerrar_sesion.Text = "Iniciar sesión";
                     div_admin.Visible = false;
-                    div_secuenciador.Visible = false;
                     btn_seminario_universitario.InnerText = "Seminario Universitario";
                 }
             }
@@ -103,12 +102,12 @@ namespace Seminario.Aplicativo
 
         protected void btn_editar_unbicaciones_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Aplicativo/aplicativo_ubicacion_instituciones.aspx");
+            Response.Redirect("~/Aplicativo/aplicativo_admin_establecimientos.aspx");
         }
 
         protected void btn_secuenciador_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Aplicativo/aplicativo_secuenciador_listado.aspx");
+            Response.Redirect("~/aplicativo_secuenciador_listado.aspx");
         }
 
         protected void lbl_iniciar_cerrar_sesion_Click(object sender, EventArgs e)

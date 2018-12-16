@@ -292,7 +292,7 @@ namespace Seminario.Aplicativo
                 cxt.Secuenciadores.Add(s);
                 cxt.SaveChanges();
 
-                Response.Redirect("~/Aplicativo/aplicativo_secuenciador_listado.aspx");
+                Response.Redirect("~/aplicativo_secuenciador_listado.aspx");
 
             }
         }
@@ -309,13 +309,13 @@ namespace Seminario.Aplicativo
 
                 cxt.Secuenciadores.Remove(s);
 
-                Response.Redirect("~/Aplicativo/aplicativo_secuenciador_listado.aspx");
+                Response.Redirect("~/aplicativo_secuenciador_listado.aspx");
             }
         }
 
         protected void btn_sec_volver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Aplicativo/aplicativo_secuenciador_listado.aspx");
+            Response.Redirect("~/aplicativo_secuenciador_listado.aspx");
         }
 
         protected void btn_sec_modificar_Click(object sender, EventArgs e)
@@ -384,7 +384,7 @@ namespace Seminario.Aplicativo
 
                 cxt.SaveChanges();
 
-                Response.Redirect("~/Aplicativo/aplicativo_secuenciador_listado.aspx");
+                Response.Redirect("~/aplicativo_secuenciador_listado.aspx");
 
             }
         }

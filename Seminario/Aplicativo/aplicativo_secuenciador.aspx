@@ -23,7 +23,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_cuerpo" runat="server">
 
-    <h2>Secuenciador</h2>
+    <h2>Secuencia</h2>
 
     <asp:HiddenField runat="server" ID="tb_id_sec" />
 

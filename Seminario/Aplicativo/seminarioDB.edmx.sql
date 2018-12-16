@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/05/2018 11:10:46
--- Generated from EDMX file: F:\Seminario\Seminario\Aplicativo\seminarioDB.edmx
+-- Date Created: 12/12/2018 15:16:52
+-- Generated from EDMX file: D:\Desarrollo\Mios\Seminario\Seminario\Aplicativo\seminarioDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -170,6 +170,34 @@ CREATE TABLE [dbo].[Establecimientos] (
 );
 GO
 
+-- Creating table 'Modalidades'
+CREATE TABLE [dbo].[Modalidades] (
+    [modalidad_id] int IDENTITY(1,1) NOT NULL,
+    [modalidad_nombre] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Ambitos'
+CREATE TABLE [dbo].[Ambitos] (
+    [ambito_id] int IDENTITY(1,1) NOT NULL,
+    [ambito_nombre] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Sectores'
+CREATE TABLE [dbo].[Sectores] (
+    [sector_id] int IDENTITY(1,1) NOT NULL,
+    [sector_nombre] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Orientaciones'
+CREATE TABLE [dbo].[Orientaciones] (
+    [orientacion_id] int IDENTITY(1,1) NOT NULL,
+    [orientacion_nombre] nvarchar(max)  NOT NULL
+);
+GO
+
 -- Creating table 'Region_EducativaLocalidad'
 CREATE TABLE [dbo].[Region_EducativaLocalidad] (
     [Region_EducativaLocalidad_Localidad_region_educativa_id] int  NOT NULL,
@@ -221,6 +249,30 @@ GO
 ALTER TABLE [dbo].[Establecimientos]
 ADD CONSTRAINT [PK_Establecimientos]
     PRIMARY KEY CLUSTERED ([establecimiento_id] ASC);
+GO
+
+-- Creating primary key on [modalidad_id] in table 'Modalidades'
+ALTER TABLE [dbo].[Modalidades]
+ADD CONSTRAINT [PK_Modalidades]
+    PRIMARY KEY CLUSTERED ([modalidad_id] ASC);
+GO
+
+-- Creating primary key on [ambito_id] in table 'Ambitos'
+ALTER TABLE [dbo].[Ambitos]
+ADD CONSTRAINT [PK_Ambitos]
+    PRIMARY KEY CLUSTERED ([ambito_id] ASC);
+GO
+
+-- Creating primary key on [sector_id] in table 'Sectores'
+ALTER TABLE [dbo].[Sectores]
+ADD CONSTRAINT [PK_Sectores]
+    PRIMARY KEY CLUSTERED ([sector_id] ASC);
+GO
+
+-- Creating primary key on [orientacion_id] in table 'Orientaciones'
+ALTER TABLE [dbo].[Orientaciones]
+ADD CONSTRAINT [PK_Orientaciones]
+    PRIMARY KEY CLUSTERED ([orientacion_id] ASC);
 GO
 
 -- Creating primary key on [Region_EducativaLocalidad_Localidad_region_educativa_id], [Localidades_localidad_id] in table 'Region_EducativaLocalidad'

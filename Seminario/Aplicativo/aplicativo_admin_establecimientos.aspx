@@ -27,14 +27,89 @@
         <div class="col-md-12">
             <h3>Establecimientos Educativos</h3>
             <asp:Button Text="Agregar establecimiento" CssClass="btn btn-lg btn-link" OnClick="agregar_establecimiento_Click" ID="agregar_establecimiento" runat="server" />
+
+            <div class="alert alert-info">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">Reg. educ.:</span>
+                            <select runat="server" id="tb_select_filtro_regiones" style="width: 100%" multiple="false">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">Ámbito:</span>
+                            <select runat="server" id="tb_select_filtro_ambito" style="width: 100%" multiple="false">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">Sector:</span>
+                            <select runat="server" id="tb_select_filtro_sector" style="width: 100%" multiple="false">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">Localidad:</span>
+                            <select runat="server" id="tb_select_filtro_localidad" style="width: 100%" multiple="false">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">Modalidad:</span>
+                            <select runat="server" id="tb_select_filtro_modalidad" style="width: 100%" multiple="false">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Orientaciones:</span>
+                                    <select runat="server" id="tb_select_filtro_orientaciones" style="width: 100%" multiple="true">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Otras orientaciones:</span>
+                                    <input type="text" runat="server" id="tb_filtro_otras_orientaciones" placeholder="Otras orientaciones" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">Nombre:</span>
+                            <input type="text" runat="server" id="tb_filtro_nombre_lugar" placeholder="Ingrese nombre del instituto." class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <asp:Button Text="Buscar" ID="btn_filtrar_establecimientos" CssClass="btn btn-default" OnClick="btn_filtrar_establecimientos_Click" runat="server" />
+                    </div>
+                </div>
+            </div>
+
             <asp:GridView runat="server" ID="gv_ubicaciones" AutoGenerateColumns="false" CssClass="table-responsive table table-bordered" OnRowCommand="SeleccionarRegistro">
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="ID" />
-                    <asp:BoundField DataField="region" HeaderText="Categoría" />
-                    <asp:BoundField DataField="nombre" HeaderText="Lugar" />
-                    <asp:BoundField DataField="modalidad" HeaderText="Ubicación" />
-                    <asp:BoundField DataField="sector" HeaderText="Latitud" />
-                    <asp:BoundField DataField="localidad" HeaderText="Longitud" />
+                    <asp:BoundField DataField="region" HeaderText="Region" />
+                    <asp:BoundField DataField="ambito" HeaderText="Ambito" />
+                    <asp:BoundField DataField="nivel" HeaderText="Modalidad" />
+                    <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+                    <asp:BoundField DataField="sector" HeaderText="Sector" />
+                    <asp:BoundField DataField="localidad" HeaderText="Localidad" />
 
                     <asp:ButtonField CommandName="btn_seleccionar" Text="Seleccionar">
                         <ControlStyle CssClass="btn btn-info" />
@@ -46,7 +121,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="modal_datos_instituto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="modal_datos_instituto" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -58,18 +133,14 @@
                         <div class="col-md-6">
 
                             <div class="input-group">
-                                <span class="input-group-addon">Regional:</span>
-                                <select runat="server" id="tb_select_regionales" style="width: 100%" multiple="false">
+                                <span class="input-group-addon">Region educativa:</span>
+                                <select runat="server" id="tb_select_regiones" style="width: 100%" multiple="false">
                                 </select>
                             </div>
                             <br />
                             <div class="input-group">
-                                <span class="input-group-addon">Modelo:</span>
-                                <select runat="server" id="tb_select_modelo" style="width: 100%" multiple="false">
-                                    <option value="Secundario">Secundario</option>
-                                    <option value="Tecnica">Tecnica</option>
-                                    <option value="Facultad">Facultad</option>
-                                    <option value="Otro">Otro</option>
+                                <span class="input-group-addon">Modalidad:</span>
+                                <select runat="server" id="tb_select_modalidad" style="width: 100%" multiple="false">
                                 </select>
                             </div>
                             <br />
@@ -79,22 +150,20 @@
                             </div>
                             <br />
                             <div class="input-group">
+                                <span class="input-group-addon">Localidad:</span>
+                                <select runat="server" id="tb_select_localidad" style="width: 100%" multiple="false">
+                                </select>
+                            </div>
+                            <br />
+                            <div class="input-group">
                                 <span class="input-group-addon">Ambito:</span>
                                 <select runat="server" id="tb_select_ambito" style="width: 100%" multiple="false">
-                                    <option value="opcion 1">opcion 1</option>
-                                    <option value="opcion 1">opcion 1</option>
-                                    <option value="opcion 1">opcion 1</option>
-                                    <option value="opcion 1">opcion 1</option>
                                 </select>
                             </div>
                             <br />
                             <div class="input-group">
                                 <span class="input-group-addon">Sector:</span>
                                 <select runat="server" id="tb_select_sector" style="width: 100%" multiple="false">
-                                    <option value="opcion 1">opcion 1</option>
-                                    <option value="opcion 1">opcion 1</option>
-                                    <option value="opcion 1">opcion 1</option>
-                                    <option value="opcion 1">opcion 1</option>
                                 </select>
                             </div>
                             <br />
@@ -111,14 +180,10 @@
                             <div class="input-group">
                                 <span class="input-group-addon">Orientaciones:</span>
                                 <select runat="server" id="tb_select_orientaciones" style="width: 100%" multiple="true">
-                                    <option value="opcion 1">opcion 1</option>
-                                    <option value="opcion 1">opcion 1</option>
-                                    <option value="opcion 1">opcion 1</option>
-                                    <option value="opcion 1">opcion 1</option>
                                 </select>
                             </div>
                             <br />
-                             <div class="input-group">
+                            <div class="input-group">
                                 <span class="input-group-addon">Otras orientaciones:</span>
                                 <input type="text" runat="server" id="tb_otras_orientaciones" placeholder="Otras orientaciones" class="form-control" />
                             </div>
@@ -182,32 +247,69 @@
         });
 
         $(document).ready(function () {
-            $('#<%=tb_select_regionales.ClientID %>').select2({
-                 val: null,
-                 placeholder: "Regionales",
-                 allowClear: true
-             });
-             $('#<%=tb_select_modelo.ClientID %>').select2({
-                 val: null,
-                 placeholder: "Modelo",
-                 allowClear: true
-             });
-             $('#<%=tb_select_ambito.ClientID %>').select2({
-                 val: null,
-                 placeholder: "Ambito",
-                 allowClear: true
-             });
-             $('#<%=tb_select_sector.ClientID %>').select2({
-                 val: null,
-                 placeholder: "Sector",
-                 allowClear: true
-             });
+            $('#<%=tb_select_filtro_ambito.ClientID %>').select2({
+                val: null,
+                placeholder: "Ambito",
+                allowClear: true
+            });
+            $('#<%=tb_select_filtro_localidad.ClientID %>').select2({
+                val: null,
+                placeholder: "Localidad",
+                allowClear: true
+            });
+            $('#<%=tb_select_filtro_modalidad.ClientID %>').select2({
+                val: null,
+                placeholder: "Modalidad",
+                allowClear: true
+            });
+            $('#<%=tb_select_filtro_orientaciones.ClientID %>').select2({
+                val: null,
+                placeholder: "Orientaciones",
+                allowClear: true
+            });
+            $('#<%=tb_select_filtro_regiones.ClientID %>').select2({
+                val: null,
+                placeholder: "Regiones",
+                allowClear: true
+            });
+            $('#<%=tb_select_filtro_sector.ClientID %>').select2({
+                val: null,
+                placeholder: "Sectores",
+                allowClear: true
+            });
+
+            $('#<%=tb_select_regiones.ClientID %>').select2({
+                val: null,
+                placeholder: "Regiones educativas",
+                allowClear: true
+            });
+            $('#<%=tb_select_modalidad.ClientID %>').select2({
+                val: null,
+                placeholder: "Modalidad",
+                allowClear: true
+            });
+            $('#<%=tb_select_localidad.ClientID %>').select2({
+                val: null,
+                placeholder: "Localidad",
+                allowClear: true
+            });
+            $('#<%=tb_select_ambito.ClientID %>').select2({
+                val: null,
+                placeholder: "Ambito",
+                allowClear: true
+            });
+            $('#<%=tb_select_sector.ClientID %>').select2({
+                val: null,
+                placeholder: "Sector",
+                allowClear: true
+            });
             $('#<%=tb_select_orientaciones.ClientID %>').select2({
-                 val: null,
-                 placeholder: "Orientaciones",
-                 allowClear: true
-             });
-         });
+                val: null,
+                placeholder: "Orientaciones",
+                allowClear: true
+            });
+        });
+
     </script>
 
 </asp:Content>
