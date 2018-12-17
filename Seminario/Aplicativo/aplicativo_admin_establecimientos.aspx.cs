@@ -328,7 +328,7 @@ namespace Seminario.Aplicativo
                     {
                         if (!item_orientacion.Contains('_'))
                         {
-                            tb_select_orientaciones.Items.FindByValue(item_orientacion).Selected = true;
+                             tb_select_orientaciones.Items.FindByValue(item_orientacion).Selected = true;
                         }
                         else
                         {
@@ -495,6 +495,10 @@ namespace Seminario.Aplicativo
                     es.establecimiento_orientaciones = es.establecimiento_orientaciones.Count() == 0 ? "_" + tb_otras_orientaciones.Value.Replace(";", ",") : es.establecimiento_orientaciones + ";_" + tb_otras_orientaciones.Value.Replace(";", ",");
                 }
 
+                if (es.establecimiento_orientaciones == "")
+                {
+                    es.establecimiento_orientaciones = "_ ";
+                }
                 #endregion
 
                 cxt.Establecimientos.Add(es);
@@ -552,6 +556,11 @@ namespace Seminario.Aplicativo
                     if (tb_otras_orientaciones.Value.Count() > 0)
                     {
                         es.establecimiento_orientaciones = es.establecimiento_orientaciones.Count() == 0 ? "_" + tb_otras_orientaciones.Value.Replace(";", ",") : es.establecimiento_orientaciones + ";_" + tb_otras_orientaciones.Value.Replace(";", ",");
+                    }
+
+                    if (es.establecimiento_orientaciones == "")
+                    {
+                        es.establecimiento_orientaciones = "_ ";
                     }
 
                     #endregion

@@ -163,7 +163,7 @@
                                 <asp:Button Text="Establecimientos" CssClass="btn btn-mapa" ID="btn_institutos" OnClick="btn_institutos_Click" runat="server" />
                             </div>
                             <div class="btn-group" role="group" runat="server" id="div_secuenciador">
-                                <asp:Button Text="Secuencia" CssClass="btn btn-default" ID="btn_secuenciador" OnClick="btn_secuenciador_Click" runat="server" />
+                                <asp:Button Text="Secuencia" CssClass="btn btn-info" ID="btn_secuenciador" OnClick="btn_secuenciador_Click" runat="server" />
                             </div>
                             <div class="btn-group" role="group" runat="server" id="div_admin">
                                 <button type="button" class="btn btn-mapa dropdown-toggle" data-toggle="dropdown" runat="server" id="btn_institutos_admin" aria-haspopup="true" aria-expanded="false">
