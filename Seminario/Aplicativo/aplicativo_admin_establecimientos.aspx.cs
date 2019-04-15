@@ -388,6 +388,10 @@ namespace Seminario.Aplicativo
             tb_email.Value = "";
             tb_telefono.Value = "";
 
+            foreach (ListItem orientacion in tb_select_orientaciones.Items)
+            {
+                orientacion.Selected = false;
+            }
 
             btn_agregar.Enabled = true;
             btn_eliminar.Enabled = false;

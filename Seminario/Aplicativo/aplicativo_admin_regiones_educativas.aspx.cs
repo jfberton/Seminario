@@ -93,6 +93,7 @@ namespace Seminario.Aplicativo
             int fila = int.Parse(e.CommandArgument.ToString());
 
             int id_re = 0;
+            Limpiar();
 
             if (int.TryParse(gv_regiones_educativas.Rows[fila].Cells[0].Text, out id_re))
             {
@@ -128,7 +129,7 @@ namespace Seminario.Aplicativo
             tb_re_industrias.Value = "";
             tb_re_produccion.Value = "";
             tb_select_localidades.SelectedIndex = 0;
-
+            
             btn_agregar.Enabled = true;
             btn_eliminar.Enabled = false;
             btn_modificar.Enabled = false;

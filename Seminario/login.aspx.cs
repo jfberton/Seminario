@@ -27,5 +27,15 @@ namespace Seminario
                 }
             }
         }
+
+        protected void btn_nueva_cuenta_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("alta_usuario.aspx");
+        }
+
+        protected void btn_clave_nueva_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("nueva_clave.aspx");
+        }
     }
 }

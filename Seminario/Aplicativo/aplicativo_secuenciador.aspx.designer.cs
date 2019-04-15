@@ -46,7 +46,7 @@ namespace Seminario.Aplicativo {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText tb_sec_gen_area;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect tb_sec_gen_area;
         
         /// <summary>
         /// tb_sec_gen_asignatura control.
@@ -64,7 +64,7 @@ namespace Seminario.Aplicativo {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText tb_sec_gen_curso;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect tb_sec_gen_curso;
         
         /// <summary>
         /// tb_sec_gen_institucion control.
@@ -85,42 +85,6 @@ namespace Seminario.Aplicativo {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea tb_sec_desc_tema;
         
         /// <summary>
-        /// tb_sec_desc_contenido control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea tb_sec_desc_contenido;
-        
-        /// <summary>
-        /// lbl_cantidad_clases control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_cantidad_clases;
-        
-        /// <summary>
-        /// btn_agregar_clase control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_agregar_clase;
-        
-        /// <summary>
-        /// gv_clases control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_clases;
-        
-        /// <summary>
         /// tb_sec_desc_autor control.
         /// </summary>
         /// <remarks>
@@ -128,6 +92,15 @@ namespace Seminario.Aplicativo {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea tb_sec_desc_autor;
+        
+        /// <summary>
+        /// tb_sec_desc_contenido control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea tb_sec_desc_contenido;
         
         /// <summary>
         /// tb_sec_desc_capacidades control.
@@ -173,6 +146,33 @@ namespace Seminario.Aplicativo {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea tb_sec_desc_evaluacion;
+        
+        /// <summary>
+        /// lbl_cantidad_clases control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_cantidad_clases;
+        
+        /// <summary>
+        /// btn_agregar_clase control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_agregar_clase;
+        
+        /// <summary>
+        /// gv_clases control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_clases;
         
         /// <summary>
         /// btn_sec_agregar control.

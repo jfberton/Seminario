@@ -107,6 +107,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="alta_usuario.aspx" />
     <Content Include="Aplicativo\aplicativo_admin_establecimientos.aspx" />
     <Content Include="Aplicativo\aplicativo_admin_regiones_educativas.aspx" />
     <Content Include="Aplicativo\aplicativo_admin_usuarios.aspx" />
@@ -115,6 +116,8 @@
     <Content Include="Aplicativo\aplicativo_ubicacion_instituciones.aspx" />
     <Content Include="Aplicativo\mapa_guardarpuntos.aspx" />
     <Content Include="Aplicativo\mapa_mostrar_ubicaciones.aspx" />
+    <Content Include="mail_nuevo_usuario.html" />
+    <Content Include="nueva_clave.aspx" />
     <Content Include="Reportes\reportes.aspx" />
     <Content Include="Aplicativo\secuenciador_alta.aspx" />
     <Content Include="Aplicativo\seminarioDB.Context.tt">
@@ -2264,6 +2267,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="alta_usuario.aspx.cs">
+      <DependentUpon>alta_usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="alta_usuario.aspx.designer.cs">
+      <DependentUpon>alta_usuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\Ambito.cs">
       <DependentUpon>seminarioDB.tt</DependentUpon>
     </Compile>
@@ -2295,6 +2305,7 @@
     <Compile Include="Aplicativo\aplicativo_secuenciador.aspx.designer.cs">
       <DependentUpon>aplicativo_secuenciador.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aplicativo\MessageBox.cs" />
     <Compile Include="aplicativo_secuenciador_listado.aspx.cs">
       <DependentUpon>aplicativo_secuenciador_listado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2340,6 +2351,14 @@
     </Compile>
     <Compile Include="Aplicativo\Region_Educativa.cs">
       <DependentUpon>seminarioDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generador_claves.cs" />
+    <Compile Include="nueva_clave.aspx.cs">
+      <DependentUpon>nueva_clave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nueva_clave.aspx.designer.cs">
+      <DependentUpon>nueva_clave.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reportes\reportes.aspx.cs">
       <DependentUpon>reportes.aspx</DependentUpon>

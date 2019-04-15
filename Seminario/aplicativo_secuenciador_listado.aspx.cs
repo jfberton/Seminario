@@ -29,63 +29,67 @@ namespace Seminario
                 string asignatura = tb_filtro_asignatura.Value;
                 string curso = tb_filtro_curso.Value;
                 string instituto = tb_filtro_instituto.Value;
-
+                string area = tb_filtro_area.Value;
 
                 if (u != null)
                 {
                     var secuencias = (from ss in cxt.Secuenciadores
-                                       where (ss.usuario_id == u.usuario_id || ss.secuenciador_publico)
-                                            //&& ss.secuenciador_datos_generales_asignatura.Contains(asignatura) 
-                                            //&& ss.secuenciador_datos_generales_curso.Contains(curso)
-                                            //&& ss.secuenciador_datos_generales_institucion.Contains(instituto)
-                                       select new
-                                       {
-                                           id = ss.secuenciador_id,
-                                           publico = ss.secuenciador_publico,
-                                           nombre = ss.secuenciador_datos_generales_nombre,
-                                           area = ss.secuenciador_datos_generales_area,
-                                           asignatura = ss.secuenciador_datos_generales_asignatura,
-                                           curso = ss.secuenciador_datos_generales_curso,
-                                           institucion = ss.secuenciador_datos_generales_institucion
-                                       }).ToList();
+                                      where (ss.usuario_id == u.usuario_id || ss.secuenciador_publico)
+                                      //&& ss.secuenciador_datos_generales_asignatura.Contains(asignatura) 
+                                      //&& ss.secuenciador_datos_generales_curso.Contains(curso)
+                                      //&& ss.secuenciador_datos_generales_institucion.Contains(instituto)
+                                      select new
+                                      {
+                                          id = ss.secuenciador_id,
+                                          publico = ss.secuenciador_publico,
+                                          nombre = ss.secuenciador_datos_generales_nombre,
+                                          area = ss.secuenciador_datos_generales_area,
+                                          asignatura = ss.secuenciador_datos_generales_asignatura,
+                                          curso = ss.secuenciador_datos_generales_curso,
+                                          institucion = ss.secuenciador_datos_generales_institucion
+                                      }).ToList();
 
                     var secuenciasFiltradas = (from ss in secuencias
                                                where
                                                     Contiene(ss.asignatura, asignatura)
                                                     && Contiene(ss.curso, curso)
                                                     && Contiene(ss.institucion, instituto)
+                                                    && Contiene(ss.area, area)
                                                select ss).ToList();
 
                     gv_secuenciadores.DataSource = secuenciasFiltradas;
                     gv_secuenciadores.DataBind();
+                    gv_secuenciadores.Columns[7].Visible = true;
                 }
                 else
                 {
                     var secuencias = (from ss in cxt.Secuenciadores
-                                       where ss.secuenciador_publico
-                                            //&& ss.secuenciador_datos_generales_asignatura.Contains(asignatura)
-                                            //&& ss.secuenciador_datos_generales_curso.Contains(curso)
-                                            //&& ss.secuenciador_datos_generales_institucion.Contains(instituto)
-                                       select new
-                                       {
-                                           id = ss.secuenciador_id,
-                                           publico = ss.secuenciador_publico,
-                                           nombre = ss.secuenciador_datos_generales_nombre,
-                                           area = ss.secuenciador_datos_generales_area,
-                                           asignatura = ss.secuenciador_datos_generales_asignatura,
-                                           curso = ss.secuenciador_datos_generales_curso,
-                                           institucion = ss.secuenciador_datos_generales_institucion
-                                       }).ToList();
+                                      where ss.secuenciador_publico
+                                      //&& ss.secuenciador_datos_generales_asignatura.Contains(asignatura)
+                                      //&& ss.secuenciador_datos_generales_curso.Contains(curso)
+                                      //&& ss.secuenciador_datos_generales_institucion.Contains(instituto)
+                                      select new
+                                      {
+                                          id = ss.secuenciador_id,
+                                          publico = ss.secuenciador_publico,
+                                          nombre = ss.secuenciador_datos_generales_nombre,
+                                          area = ss.secuenciador_datos_generales_area,
+                                          asignatura = ss.secuenciador_datos_generales_asignatura,
+                                          curso = ss.secuenciador_datos_generales_curso,
+                                          institucion = ss.secuenciador_datos_generales_institucion
+                                      }).ToList();
 
                     var secuenciasFiltradas = (from ss in secuencias
                                                where
                                                     Contiene(ss.asignatura, asignatura)
                                                     && Contiene(ss.curso, curso)
                                                     && Contiene(ss.institucion, instituto)
+                                                    && Contiene(ss.area, area)
                                                select ss).ToList();
 
                     gv_secuenciadores.DataSource = secuenciasFiltradas;
                     gv_secuenciadores.DataBind();
+                    gv_secuenciadores.Columns[7].Visible = false;
                 }
             }
 

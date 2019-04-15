@@ -43,171 +43,171 @@
                 <h3>Descripción</h3>
             </a></li>
         </ul>
-        <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="tab_sec_datos_generales">
+        <div class="tab-content panel panel-default">
+
+            <div role="tabpanel" class="tab-pane panel-body fade in active" id="tab_sec_datos_generales">
                 <div class="panel-group" id="acordion_generales" role="tablist" aria-multiselectable="true">
                     <div class="input-group">
-                        <span class="input-group-addon">
-                            Nombre de la secuencia:
+                        <span class="input-group-addon">Nombre de la secuencia:
                         </span>
                         <input type="text" class="form-control" runat="server" id="tb_sec_gen_nombre" />
                     </div>
                     <br />
                     <div class="input-group">
-                        <span class="input-group-addon">
-                            Área Académica:
+                        <span class="input-group-addon">Área Académica:
                         </span>
-                        <input type="text" class="form-control" runat="server" id="tb_sec_gen_area" />
+                        <select id="tb_sec_gen_area" runat="server" style="width: 100%">
+                            <option value="Matemática">Matemática</option>
+                            <option value="Lengua">Lengua</option>
+                            <option value="Ciencias Sociales">Ciencias Sociales</option>
+                            <option value="Ciencias Naturales">Ciencias Naturales</option>
+                            <option value="Artistística">Artistística</option>
+                            <option value="Educacion Física">Educacion Física</option>
+                            <option value="Tecnología">Tecnología</option>
+                            <option value="Informática">Informática</option>
+                            <option value="Otro">Otro</option>
+                        </select>
                     </div>
                     <br />
                     <div class="input-group">
-                        <span class="input-group-addon">
-                            Asignatura:
+                        <span class="input-group-addon">Asignatura:
                         </span>
                         <input type="text" class="form-control" runat="server" id="tb_sec_gen_asignatura" />
                     </div>
                     <br />
                     <div class="input-group">
-                        <span class="input-group-addon">
-                            Curso :
+                        <span class="input-group-addon">Curso :
                         </span>
-                        <input type="text" class="form-control" runat="server" id="tb_sec_gen_curso" />
+                        <select runat="server" id="tb_sec_gen_curso" style="width:100%">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                        </select>
                     </div>
                     <br />
                     <div class="input-group">
-                        <span class="input-group-addon">
-                            Institución:
+                        <span class="input-group-addon">Institución:
                         </span>
                         <input type="text" class="form-control" runat="server" id="tb_sec_gen_institucion" />
                     </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="tab_sec_descripcion">
-                <div class="panel-group" id="acordion_descripcion" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="enc_sec_desc_tema">
-                            <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#acordion_descripcion" href="#SecDescTema" aria-expanded="true" aria-controls="SecDescTema">Tema General
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="SecDescTema" class="panel-collapse collapse" role="tabpanel" aria-labelledby="enc_sec_desc_tema">
-                            <textarea class="form-control" runat="server" id="tb_sec_desc_tema"></textarea>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="enc_sec_desc_contenidos">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#acordion_descripcion" href="#SecDescContenidos" aria-expanded="false" aria-controls="SecDescContenidos">Contenidos
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="SecDescContenidos" class="panel-collapse collapse" role="tabpanel" aria-labelledby="enc_sec_desc_contenido">
-                            <textarea class="form-control" runat="server" id="tb_sec_desc_contenido"></textarea>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="enc_sec_desc_num_clases">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#acordion_descripcion" href="#SecDescClases" aria-expanded="false" aria-controls="SecGenAsignatura">Clases <span class="badge">
-                                    <asp:Label Text="0" ID="lbl_cantidad_clases" runat="server" /></span>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="SecDescClases" class="panel-collapse collapse" role="tabpanel" aria-labelledby="enc_sec_desc_num_clases">
-                            <div class="panel-body">
-                                <asp:Button Text="Agregar clase" ID="btn_agregar_clase" CssClass="btn btn-success" OnClick="btn_agregar_clase_Click" runat="server" />
 
+            <div role="tabpanel" class="tab-pane fade panel-body" id="tab_sec_descripcion">
 
-                                <asp:GridView runat="server" ID="gv_clases" AutoGenerateColumns="false" CssClass="table-responsive table table-bordered" OnRowCommand="SeleccionarRegistro">
-                                    <Columns>
-                                        <asp:BoundField DataField="id" ItemStyle-CssClass="Hide" HeaderStyle-CssClass="Hide" HeaderText="ID" />
-                                        <asp:BoundField DataField="numero" HeaderText="Nro" />
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Tema General
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <textarea class="form-control" runat="server" id="tb_sec_desc_tema"></textarea>
+                    </div>
+                </div>
 
-                                        <asp:ButtonField CommandName="btn_seleccionar" Text="Seleccionar">
-                                            <ControlStyle CssClass="btn btn-info" />
-                                        </asp:ButtonField>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Autor
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <textarea class="form-control" runat="server" id="tb_sec_desc_autor"></textarea>
+                    </div>
+                </div>
 
-                                    </Columns>
-                                </asp:GridView>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Contenidos
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <textarea class="form-control" runat="server" id="tb_sec_desc_contenido"></textarea>
+                    </div>
+                </div>
 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Capacidades a desarrollar
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <textarea class="form-control" runat="server" id="tb_sec_desc_capacidades"></textarea>
+                    </div>
+                </div>
 
-                            </div>
-                        </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Propósitos
+                        </h4>
                     </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="enc_sec_desc_autor">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#acordion_descripcion" href="#SecDescAutor" aria-expanded="false" aria-controls="SecDescAutor">Autor
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="SecDescAutor" class="panel-collapse collapse" role="tabpanel" aria-labelledby="enc_sec_desc_autor">
-                            <textarea class="form-control" runat="server" id="tb_sec_desc_autor"></textarea>
-                        </div>
+                    <div class="panel-body">
+                        <textarea class="form-control" runat="server" id="tb_sec_desc_propositos"></textarea>
                     </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="enc_sec_desc_capacidades">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#acordion_descripcion" href="#SecDescCapacidades" aria-expanded="false" aria-controls="SecDescCapacidades">Capacidades a desarrollar
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="SecDescCapacidades" class="panel-collapse collapse" role="tabpanel" aria-labelledby="enc_sec_desc_capacidades">
-                            <textarea class="form-control" runat="server" id="tb_sec_desc_capacidades"></textarea>
-                        </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Objetivos
+                        </h4>
                     </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="enc_sec_desc_propositos">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#acordion_descripcion" href="#SecDescPropositos" aria-expanded="false" aria-controls="SecDescPropositos">Propósitos
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="SecDescPropositos" class="panel-collapse collapse" role="tabpanel" aria-labelledby="enc_sec_desc_capacidades">
-                            <textarea class="form-control" runat="server" id="tb_sec_desc_propositos"></textarea>
-                        </div>
+                    <div class="panel-body">
+                        <textarea class="form-control" runat="server" id="tb_sec_desc_objetivos"></textarea>
                     </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="enc_sec_desc_objetivos">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#acordion_descripcion" href="#SecDescObjetivo" aria-expanded="false" aria-controls="SecDescObjetivo">Objetivos
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="SecDescObjetivo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="enc_sec_desc_capacidades">
-                            <textarea class="form-control" runat="server" id="tb_sec_desc_objetivos"></textarea>
-                        </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Metodología
+                        </h4>
                     </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="enc_sec_desc_metodologia">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#acordion_descripcion" href="#SecDescMetodologia" aria-expanded="false" aria-controls="SecDescMetodologia">Metodología
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="SecDescMetodologia" class="panel-collapse collapse" role="tabpanel" aria-labelledby="enc_sec_desc_capacidades">
-                            <textarea class="form-control" runat="server" id="tb_sec_desc_metodologia"></textarea>
-                        </div>
+                    <div class="panel-body">
+                        <textarea class="form-control" runat="server" id="tb_sec_desc_metodologia"></textarea>
                     </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="enc_sec_desc_evaluacion">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#acordion_descripcion" href="#SecDescEvaluacion" aria-expanded="false" aria-controls="SecDescEvaluacion">Orientaciones Generales de Evaluación
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="SecDescEvaluacion" class="panel-collapse collapse" role="tabpanel" aria-labelledby="enc_sec_desc_evaluacion">
-                            <textarea class="form-control" runat="server" id="tb_sec_desc_evaluacion"></textarea>
-                        </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Orientaciones Generales de Evaluación
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <textarea class="form-control" runat="server" id="tb_sec_desc_evaluacion"></textarea>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Clases <span class="badge">
+                            <asp:Label Text="0" ID="lbl_cantidad_clases" runat="server" /></span>
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <asp:Button Text="Agregar clase" ID="btn_agregar_clase" CssClass="btn btn-success" OnClick="btn_agregar_clase_Click" runat="server" />
+
+                        <asp:GridView runat="server" ID="gv_clases" AutoGenerateColumns="false" CssClass="table-responsive table table-bordered" OnRowCommand="SeleccionarRegistro">
+                            <Columns>
+                                <asp:BoundField DataField="id" ItemStyle-CssClass="Hide" HeaderStyle-CssClass="Hide" HeaderText="ID" />
+                                <asp:BoundField DataField="numero" HeaderText="Nombre/Número" />
+
+                                <asp:ButtonField CommandName="btn_seleccionar" Text="Seleccionar">
+                                    <ControlStyle CssClass="btn btn-info" />
+                                </asp:ButtonField>
+
+                            </Columns>
+                        </asp:GridView>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
     <asp:Button Text="Agregar" CssClass="btn btn-lg btn-success" runat="server" ID="btn_sec_agregar" OnClick="btn_sec_agregar_Click" UseSubmitBehavior="false" />
-    <asp:Button Text="Modificar" CssClass="btn btn-lg btn-warning" runat="server" ID="btn_sec_modificar" OnClick="btn_sec_modificar_Click" UseSubmitBehavior="false" />
+    <asp:Button Text="Guardar" CssClass="btn btn-lg btn-warning" runat="server" ID="btn_sec_modificar" OnClick="btn_sec_modificar_Click" UseSubmitBehavior="false" />
     <asp:Button Text="Eliminar" CssClass="btn btn-lg btn-danger" runat="server" ID="btn_sec_eliminar" OnClick="btn_sec_eliminar_Click" UseSubmitBehavior="false" />
     <asp:Button Text="Volver" CssClass="btn btn-lg btn-default" runat="server" ID="btn_sec_volver" OnClick="btn_sec_volver_Click" UseSubmitBehavior="false" />
 
@@ -262,7 +262,7 @@
                 </div>
                 <div class="modal-footer">
                     <asp:Button Text="Agregar" OnClick="btn_clase_agregar_Click" CssClass="btn btn-success" ID="btn_clase_agregar" runat="server" UseSubmitBehavior="false" />
-                    <asp:Button Text="Modificar" CssClass="btn btn-warning" OnClick="btn_clase_modificar_Click" ID="btn_clase_modificar" Enabled="false" runat="server" UseSubmitBehavior="false" />
+                    <asp:Button Text="Guardar" CssClass="btn btn-warning" OnClick="btn_clase_modificar_Click" ID="btn_clase_modificar" Enabled="false" runat="server" UseSubmitBehavior="false" />
                     <asp:Button Text="Eliminar" CssClass="btn btn-danger" OnClick="btn_clase_eliminar_Click" ID="btn_clase_eliminar" Enabled="false" runat="server" UseSubmitBehavior="false" />
 
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -274,6 +274,10 @@
     <script>
         $(document).ready(function () {
             /*CLASE*/
+            $('#<%=tb_sec_gen_area.ClientID %>').select2();
+
+            $('#<%=tb_sec_gen_curso.ClientID %>').select2();
+
             $('#<%=tb_clase_apertura.ClientID %>').summernote({
                 placeholder: 'Ingrese aquí las actividades de apertura',
                 tabsize: 2,

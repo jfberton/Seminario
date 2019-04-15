@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <h2 class="form-signin-heading">Ingrese sus credenciales</h2>
+            <h2 class="form-signin-heading">Ingrese su usuario</h2>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input type="text" runat="server" id="tb_usuario" class="form-control" placeholder="Usuario" autofocus />
             <br />
@@ -17,6 +17,11 @@
             <input type="password" id="tb_clave" runat="server" class="form-control" placeholder="Contraseña" />
             <br />
             <asp:Button Text="Ingresar" CssClass="btn btn-lg btn-primary btn-block" ID="btn_login" UseSubmitBehavior="true" OnClick="btn_login_ServerClick" runat="server" />
+            <br />
+            Aún no tengo cuenta, <asp:LinkButton Text="quiero registrarme" runat="server" id="btn_nueva_cuenta" OnClick="btn_nueva_cuenta_Click" />
+            <br />
+            Me olvide la clave, <asp:LinkButton Text="quiero generar otra clave" runat="server" id="btn_clave_nueva" OnClick="btn_clave_nueva_Click" />
+            
         </div>
         <div class="col-md-4"></div>
     </div>

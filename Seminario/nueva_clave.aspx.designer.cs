@@ -10,51 +10,33 @@
 namespace Seminario {
     
     
-    public partial class login {
+    public partial class nueva_clave {
         
         /// <summary>
-        /// tb_usuario control.
+        /// tb_usuario_email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText tb_usuario;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tb_usuario_email;
         
         /// <summary>
-        /// tb_clave control.
+        /// btn_guardar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword tb_clave;
+        protected global::System.Web.UI.WebControls.Button btn_guardar;
         
         /// <summary>
-        /// btn_login control.
+        /// btn_cancelar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_login;
-        
-        /// <summary>
-        /// btn_nueva_cuenta control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btn_nueva_cuenta;
-        
-        /// <summary>
-        /// btn_clave_nueva control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btn_clave_nueva;
+        protected global::System.Web.UI.WebControls.Button btn_cancelar;
     }
 }

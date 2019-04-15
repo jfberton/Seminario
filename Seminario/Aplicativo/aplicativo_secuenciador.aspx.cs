@@ -39,6 +39,7 @@ namespace Seminario.Aplicativo
                             btn_sec_eliminar.Enabled = false;
                             btn_clase_agregar.Enabled = false;
                         }
+
                     }
 
                     CargarDatos();
@@ -112,6 +113,12 @@ namespace Seminario.Aplicativo
 
         protected void btn_agregar_clase_Click(object sender, EventArgs e)
         {
+            tb_clase_apertura.Value = "";
+            tb_clase_aprendizaje.Value = "";
+            tb_clase_bibliografia.Value = "";
+            tb_clase_cierre.Value = "";
+            tb_clase_desarrollo.Value = "";
+            tb_clase_numero.Value = "";
             MostrarPopUpClase();
         }
 
@@ -191,7 +198,7 @@ namespace Seminario.Aplicativo
             Clase c = new Clase();
 
             c.clase_id = Guid.NewGuid();
-            c.clase_numero = tb_clase_numero.Value;
+            c.clase_numero = tb_clase_numero.Value==""? "(Vacío)" : tb_clase_numero.Value;
             c.clase_actividades_apertura = tb_clase_apertura.Value;
             c.clase_actividades_cierre = tb_clase_cierre.Value;
             c.clase_actividades_desarrollo = tb_clase_desarrollo.Value;
@@ -214,7 +221,7 @@ namespace Seminario.Aplicativo
 
             Clase c = s.Clases.FirstOrDefault(cc => cc.clase_id == id_clase);
 
-            c.clase_numero = tb_clase_numero.Value;
+            c.clase_numero = tb_clase_numero.Value == "" ? "(Vacío)" : tb_clase_numero.Value;
             c.clase_actividades_apertura = tb_clase_apertura.Value;
             c.clase_actividades_cierre = tb_clase_cierre.Value;
             c.clase_actividades_desarrollo = tb_clase_desarrollo.Value;
@@ -308,6 +315,8 @@ namespace Seminario.Aplicativo
                 Secuenciador s = cxt.Secuenciadores.FirstOrDefault(ss => ss.secuenciador_id == s_temp.secuenciador_id);
 
                 cxt.Secuenciadores.Remove(s);
+
+                cxt.SaveChanges();
 
                 Response.Redirect("~/aplicativo_secuenciador_listado.aspx");
             }

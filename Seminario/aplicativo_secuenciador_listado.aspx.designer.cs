@@ -22,6 +22,15 @@ namespace Seminario {
         protected global::System.Web.UI.WebControls.Button btn_agregar_secuenciador;
         
         /// <summary>
+        /// tb_filtro_area control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect tb_filtro_area;
+        
+        /// <summary>
         /// tb_filtro_asignatura control.
         /// </summary>
         /// <remarks>
@@ -46,7 +55,7 @@ namespace Seminario {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText tb_filtro_curso;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect tb_filtro_curso;
         
         /// <summary>
         /// btn_filtrar control.
